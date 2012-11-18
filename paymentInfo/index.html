@@ -1,0 +1,33 @@
+<!-- @include _header -->
+
+	<section>
+		<form>
+			<fieldset class="credit-card-group">
+				<input type="text" class="card-number" pattern="[0-9]*" placeholder="1234 5678 9012 3456">
+				<input type="text" class="card-expiration" pattern="[0-9]*" placeholder="MM/YY">
+				<input type="text" class="card-cvv" pattern="[0-9]*" placeholder="CVV">
+				<input type="text" class="card-zip" pattern="[0-9]*" placeholder="ZIP">
+			</fieldset>
+		</form>
+	</section>
+	<section>
+		<h3>Next</h3>
+		<ul>
+			<li>See how graceful the degradation will go.</li>
+			<li>Upload to Github.</li>
+		</ul>
+		<h3>Notes</h3>
+		<ul>
+			<li>Right now, the two-digit year only allows for 12-29. Which is fine, but there's no support for automatically updating this when the year changes. We would have to update the mask manually. Might be better to leave it alone and allow server/client validation to handle this case in production.</li>
+			<li>On iOS, you need to have the meta tag for mobile app capable if you want the JavaScript focus events to work. Not sure this workaround applies to Android (I'm guessing no). Did a lot of looking around, and this is a common problem. Couldn't find any direct Webkit bugs though. Not sure if this is intentional or a real bug.</li>
+		</ul>
+		<h3>Refinements</h3>
+		<ul>
+			<li>Support Canadian postal code formats like "T2X1V4".</li>
+			<li>If a number is not allowed via the mask, then shake the field a bit to indicate something is wrong. <span style="text-decoration: line-through;">Will need to submit a request to the inputmask project for an event hook.</span></li>
+			<li>Add a style for errors.</li>
+			<li>Talk to Adam about a set of SVG icons and then use PNGs as a fallback.</li>
+		</ul>
+	</section>
+
+<!-- @include _footer -->
