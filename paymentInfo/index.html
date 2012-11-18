@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="utf-8" />
 	<meta content="width=device-width" name="viewport" />
@@ -11,20 +11,21 @@
         }, 500)
       </script>
 	<link type="text/css" rel="stylesheet" href="assets/css/normalize.css" />
-	<link type="text/css" rel="stylesheet" href="assets/css/paymentInfo.css" />
+	<link type="text/css" rel="stylesheet" href="assets/css/demo/demo.css" />
+<link type="text/css" rel="stylesheet" href="assets/css/paymentInfo.css" />
 	<link rel="shortcut icon" href="assets/favicon.ico" />
 	<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 	<title>Payment Info</title>
 </head>
 <body>
 
-	<section>
+	<section id="demo">
 		<form>
 			<fieldset class="credit-card-group">
-				<input type="text" placeholder="1234 5678 9012 3456" pattern="[0-9]*" class="card-number" />
-				<input type="text" placeholder="MM/YY" pattern="[0-9]*" class="card-expiration" />
-				<input type="text" placeholder="CVV" pattern="[0-9]*" class="card-cvv" />
-				<input type="text" placeholder="ZIP" pattern="[0-9]*" class="card-zip" />
+				<input class="card-number" placeholder="1234 5678 9012 3456" type="text" pattern="[0-9]*" />
+				<input class="card-expiration" placeholder="MM/YY" type="text" pattern="[0-9]*" />
+				<input class="card-cvv" placeholder="CVV" type="text" pattern="[0-9]*" />
+				<input class="card-zip" placeholder="ZIP" type="text" pattern="[0-9]*" />
 			</fieldset>
 		</form>
 	</section>
@@ -32,7 +33,6 @@
 		<h3>Next</h3>
 		<ul>
 			<li>See how graceful the degradation will go.</li>
-			<li>Upload to Github.</li>
 		</ul>
 		<h3>Notes</h3>
 		<ul>
@@ -44,15 +44,15 @@
 			<li>Support Canadian postal code formats like "T2X1V4".</li>
 			<li>If a number is not allowed via the mask, then shake the field a bit to indicate something is wrong. <span style="text-decoration: line-through;">Will need to submit a request to the inputmask project for an event hook.</span></li>
 			<li>Add a style for errors.</li>
-			<li>Talk to Adam about a set of SVG icons and then use PNGs as a fallback.</li>
+			<li>Use SVG icons and then use PNGs as a fallback.</li>
 		</ul>
 	</section>
 
-	<script type="text/javascript" src="assets/scripts/libs/modernizr.js"></script>
-	<script type="text/javascript" src="assets/scripts/libs/jquery.js"></script>
-	<script type="text/javascript" src="assets/scripts/libs/jquery.inputmask.js"></script>
-	<script type="text/javascript" src="assets/scripts/libs/jquery.inputmask.date.extensions.js"></script>
-	<script type="text/javascript" src="assets/scripts/app.js"></script>
+	<script src="assets/scripts/libs/modernizr.js" type="text/javascript"></script>
+	<script src="assets/scripts/libs/jquery.js" type="text/javascript"></script>
+	<script src="assets/scripts/libs/jquery.inputmask.js" type="text/javascript"></script>
+	<script src="assets/scripts/libs/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
+	<script src="assets/scripts/app.js" type="text/javascript"></script>
 </body>
 
 </html>
