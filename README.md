@@ -1,4 +1,4 @@
-toscani
+Toscani
 =======
 
 A series of experiments
