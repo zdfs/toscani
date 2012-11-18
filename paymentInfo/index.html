@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8" />
+	<meta content="width=device-width" name="viewport" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<script>
+        setTimeout(function(){
+          ws = new WebSocket('ws://localhost:35353')
+          ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
+        }, 500)
+      </script>
+	<link type="text/css" rel="stylesheet" href="assets/css/normalize.css" />
+	<link type="text/css" rel="stylesheet" href="assets/css/paymentInfo.css" />
+	<link rel="shortcut icon" href="assets/favicon.ico" />
+	<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+	<title>Payment Info</title>
+</head>
+<body>
+
+	<section>
+		<form>
+			<fieldset class="credit-card-group">
+				<input type="text" placeholder="1234 5678 9012 3456" pattern="[0-9]*" class="card-number" />
+				<input type="text" placeholder="MM/YY" pattern="[0-9]*" class="card-expiration" />
+				<input type="text" placeholder="CVV" pattern="[0-9]*" class="card-cvv" />
+				<input type="text" placeholder="ZIP" pattern="[0-9]*" class="card-zip" />
+			</fieldset>
+		</form>
+	</section>
+	<section>
+		<h3>Next</h3>
+		<ul>
+			<li>See how graceful the degradation will go.</li>
+			<li>Upload to Github.</li>
+		</ul>
+		<h3>Notes</h3>
+		<ul>
+			<li>Right now, the two-digit year only allows for 12-29. Which is fine, but there's no support for automatically updating this when the year changes. We would have to update the mask manually. Might be better to leave it alone and allow server/client validation to handle this case in production.</li>
+			<li>On iOS, you need to have the meta tag for mobile app capable if you want the JavaScript focus events to work. Not sure this workaround applies to Android (I'm guessing no). Did a lot of looking around, and this is a common problem. Couldn't find any direct Webkit bugs though. Not sure if this is intentional or a real bug.</li>
+		</ul>
+		<h3>Refinements</h3>
+		<ul>
+			<li>Support Canadian postal code formats like "T2X1V4".</li>
+			<li>If a number is not allowed via the mask, then shake the field a bit to indicate something is wrong. <span style="text-decoration: line-through;">Will need to submit a request to the inputmask project for an event hook.</span></li>
+			<li>Add a style for errors.</li>
+			<li>Talk to Adam about a set of SVG icons and then use PNGs as a fallback.</li>
+		</ul>
+	</section>
+
+	<script type="text/javascript" src="assets/scripts/libs/modernizr.js"></script>
+	<script type="text/javascript" src="assets/scripts/libs/jquery.js"></script>
+	<script type="text/javascript" src="assets/scripts/libs/jquery.inputmask.js"></script>
+	<script type="text/javascript" src="assets/scripts/libs/jquery.inputmask.date.extensions.js"></script>
+	<script type="text/javascript" src="assets/scripts/app.js"></script>
+</body>
+
+</html>
