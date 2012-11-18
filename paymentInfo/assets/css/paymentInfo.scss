@@ -3,21 +3,6 @@
  * ======================================
  */
 
-html {
-	height: 100%;
-}
-
-body {
-	padding: 20px;
-}
-
-section + section {
-	margin-top: 50px;
-}
-
-form {
-	width: 15.5rem;
-}
 ::-webkit-input-placeholder,
 :-moz-placeholder {
    color: #DDD;
@@ -58,6 +43,7 @@ form {
 	-o-perspective: 1000;
 	perspective: 1000;
 
+	background: #FFF;
 	border-radius: 5px;
 	float: left;
 	overflow: hidden;
