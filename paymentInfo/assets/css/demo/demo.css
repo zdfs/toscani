@@ -3,22 +3,15 @@ html {
 
 body {
   background: transparent url(highlight-bg.jpg) 50% 0 no-repeat;
+  padding-top: 20px;
   min-height: 595px; }
 
 section {
   margin: 0 5%;
   width: 90%; }
 
-form {
-  margin: 0 auto;
-  width: 15.5rem; }
+section + section {
+  margin-top: 20px; }
 
-#demo {
-  background: #FFF;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  border: 1px solid #DDD;
-  border-radius: 5px;
-  margin: 20px auto;
-  padding: 20px 0 50px; }
+form {
+  margin: 0 auto; }

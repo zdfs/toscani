@@ -2,30 +2,30 @@
 <html class="no-js" lang="en">
 <head>
 	<meta charset="utf-8" />
-	<meta content="width=device-width" name="viewport" />
-	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<script>
         setTimeout(function(){
           ws = new WebSocket('ws://localhost:35353')
           ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
         }, 500)
       </script>
-	<link type="text/css" rel="stylesheet" href="assets/css/normalize.css" />
-	<link type="text/css" rel="stylesheet" href="assets/css/demo/demo.css" />
-<link type="text/css" rel="stylesheet" href="assets/css/paymentInfo.css" />
-	<link rel="shortcut icon" href="assets/favicon.ico" />
-	<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+	<link href="assets/css/normalize.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/demo/demo.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/paymentInfo.css" rel="stylesheet" type="text/css" />
+	<link href="assets/favicon.ico" rel="shortcut icon" />
+	<link href="assets/apple-touch-icon.png" rel="apple-touch-icon" />
 	<title>Payment Info</title>
 </head>
 <body>
 
-	<section id="demo">
+	<section>
 		<form>
 			<fieldset class="credit-card-group">
-				<input class="card-number" placeholder="1234 5678 9012 3456" type="text" pattern="[0-9]*" />
-				<input class="card-expiration" placeholder="MM/YY" type="text" pattern="[0-9]*" />
-				<input class="card-cvv" placeholder="CVV" type="text" pattern="[0-9]*" />
-				<input class="card-zip" placeholder="ZIP" type="text" pattern="[0-9]*" />
+				<input type="text" class="card-number" placeholder="1234 5678 9012 3456" pattern="[0-9]*" />
+				<input type="text" class="card-expiration" placeholder="MM/YY" pattern="[0-9]*" />
+				<input type="text" class="card-cvv" placeholder="CVV" pattern="[0-9]*" />
+				<input type="text" class="card-zip" placeholder="ZIP" pattern="[0-9]*" />
 			</fieldset>
 		</form>
 	</section>
@@ -45,14 +45,16 @@
 			<li>If a number is not allowed via the mask, then shake the field a bit to indicate something is wrong. <span style="text-decoration: line-through;">Will need to submit a request to the inputmask project for an event hook.</span></li>
 			<li>Add a style for errors.</li>
 			<li>Use SVG icons and then use PNGs as a fallback.</li>
+			<li>Have better mobile styles.</li>
+			<li>Add support for Shift + Tab</li>
 		</ul>
 	</section>
 
-	<script src="assets/scripts/libs/modernizr.js" type="text/javascript"></script>
-	<script src="assets/scripts/libs/jquery.js" type="text/javascript"></script>
-	<script src="assets/scripts/libs/jquery.inputmask.js" type="text/javascript"></script>
-	<script src="assets/scripts/libs/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
-	<script src="assets/scripts/app.js" type="text/javascript"></script>
+	<script type="text/javascript" src="assets/scripts/libs/modernizr.js"></script>
+	<script type="text/javascript" src="assets/scripts/libs/jquery.js"></script>
+	<script type="text/javascript" src="assets/scripts/libs/jquery.inputmask.js"></script>
+	<script type="text/javascript" src="assets/scripts/libs/jquery.inputmask.date.extensions.js"></script>
+	<script type="text/javascript" src="assets/scripts/app.js"></script>
 </body>
 
 </html>
