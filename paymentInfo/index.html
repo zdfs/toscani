@@ -2,17 +2,17 @@
 <html class="no-js" lang="en">
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta content="width=device-width" name="viewport" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
 	<script>
         setTimeout(function(){
           ws = new WebSocket('ws://localhost:35353')
           ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
         }, 500)
       </script>
-	<link href="assets/css/normalize.css" rel="stylesheet" type="text/css" />
-	<link href="assets/css/demo/demo.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/paymentInfo.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/normalize.css" type="text/css" rel="stylesheet" />
+	<link href="assets/css/demo/demo.css" type="text/css" rel="stylesheet" />
+<link href="assets/css/paymentInfo.css" type="text/css" rel="stylesheet" />
 	<link href="assets/favicon.ico" rel="shortcut icon" />
 	<link href="assets/apple-touch-icon.png" rel="apple-touch-icon" />
 	<title>Payment Info</title>
@@ -22,10 +22,10 @@
 	<section>
 		<form>
 			<fieldset class="credit-card-group">
-				<input type="text" class="card-number" placeholder="1234 5678 9012 3456" pattern="[0-9]*" />
-				<input type="text" class="card-expiration" placeholder="MM/YY" pattern="[0-9]*" />
-				<input type="text" class="card-cvv" placeholder="CVV" pattern="[0-9]*" />
-				<input type="text" class="card-zip" placeholder="ZIP" pattern="[0-9]*" />
+				<input pattern="[0-9]*" class="card-number" type="text" placeholder="1234 5678 9012 3456" />
+				<input pattern="[0-9]*" class="card-expiration" type="text" placeholder="MM/YY" />
+				<input pattern="[0-9]*" class="card-cvv" type="text" placeholder="CVV" />
+				<input pattern="[0-9]*" class="card-zip" type="text" placeholder="ZIP" />
 			</fieldset>
 		</form>
 	</section>
@@ -37,7 +37,6 @@
 		<h3>Notes</h3>
 		<ul>
 			<li>Right now, the two-digit year only allows for 12-29. Which is fine, but there's no support for automatically updating this when the year changes. We would have to update the mask manually. Might be better to leave it alone and allow server/client validation to handle this case in production.</li>
-			<li>On iOS, you need to have the meta tag for mobile app capable if you want the JavaScript focus events to work. Not sure this workaround applies to Android (I'm guessing no). Did a lot of looking around, and this is a common problem. Couldn't find any direct Webkit bugs though. Not sure if this is intentional or a real bug.</li>
 		</ul>
 		<h3>Refinements</h3>
 		<ul>
@@ -46,15 +45,14 @@
 			<li>Add a style for errors.</li>
 			<li>Use SVG icons and then use PNGs as a fallback.</li>
 			<li>Have better mobile styles.</li>
-			<li>Add support for Shift + Tab</li>
 		</ul>
 	</section>
 
-	<script type="text/javascript" src="assets/scripts/libs/modernizr.js"></script>
-	<script type="text/javascript" src="assets/scripts/libs/jquery.js"></script>
-	<script type="text/javascript" src="assets/scripts/libs/jquery.inputmask.js"></script>
-	<script type="text/javascript" src="assets/scripts/libs/jquery.inputmask.date.extensions.js"></script>
-	<script type="text/javascript" src="assets/scripts/app.js"></script>
+	<script src="assets/scripts/libs/modernizr.js" type="text/javascript"></script>
+	<script src="assets/scripts/libs/jquery.js" type="text/javascript"></script>
+	<script src="assets/scripts/libs/jquery.inputmask.js" type="text/javascript"></script>
+	<script src="assets/scripts/libs/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
+	<script src="assets/scripts/app.js" type="text/javascript"></script>
 </body>
 
 </html>
