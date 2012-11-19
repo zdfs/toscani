@@ -1,7 +1,23 @@
 /* ======================================
+ * SASS MIXINS STYLES
+ * ======================================
+ */
+
+@mixin calc($property, $expression) {
+	#{$property}: -moz-calc(#{$expression});
+	#{$property}: -o-calc(#{$expression});
+	#{$property}: -webkit-calc(#{$expression});
+	#{$property}: calc(#{$expression});
+}
+
+/* ======================================
  * DEMO STYLES
  * ======================================
  */
+
+* {
+	@include box-sizing(border-box);
+}
 
 ::-webkit-input-placeholder,
 :-moz-placeholder {
@@ -36,8 +52,6 @@
  */
 
 .js .credit-card-group {
-	@include box-sizing(border-box);
-
 	-webkit-perspective: 1000;
 	-moz-perspective: 1000;
 	-o-perspective: 1000;
@@ -45,40 +59,45 @@
 
 	background: #FFF;
 	border-radius: 5px;
-	float: left;
 	overflow: hidden;
-	padding: 3px;
+	padding: 0;
 	width: 100%;
 }
 .js .credit-card-group input {
 	border: 0;
 	outline: 0;
-	padding: 1px 0 0;
+	padding: 0;
+	vertical-align: 13%;
 }
 .js .credit-card-group input.card-number {
-	width: 10.5rem;
+	@include calc(width, "100% - 44px");
 }
 .js .credit-card-group input.card-number.transitioning {
 	@include transition (all .2s ease-in-out);
 	@include transform(translateX(-.5rem));
 }
-.js .credit-card-group input.card-expiration,
-.js .credit-card-group input.card-zip {
-	width: 3.2rem;
+.js .credit-card-group input.card-expiration {
+	width: 21.5%;
 }
-.js .credit-card-group input.card-cvv,
+.js .credit-card-group input.card-zip {
+	width: 20%;
+}
+.js .credit-card-group input.card-cvv {
+	width: 18%;
+}
 .js .credit-card-group input.card-number.full {
-	width: 2.5rem;
+	width: 15%;
 }
 .credit-card-group .card-image {
-	background: url("../images/money.png") 0 50%;
+	background: url("../images/money.png") 50% 50% no-repeat;
 	display: inline-block;
-	float: left;
-	height: 1.19rem;
-	margin-right: .7rem;
+	height: 19px;
+	margin: 3px 5px 0 3px;
 	position: relative;
-	width: 1.88rem;
+	width: 30px;
 	z-index: 2;
+
+	-webkit-background-clip: padding-box;
 
 	-webkit-transform-style: preserve-3d;
 	-moz-transform-style: preserve-3d;
@@ -87,30 +106,28 @@
 
 }
 .credit-card-group .card-image.visa {
-	background: url("../images/visa.png") 0 50%;
+	background: url("../images/visa.png") 0 50% no-repeat;
 	@include transition (all .25s linear);
 }
 .credit-card-group .card-image.amex {
-	background: url("../images/amex.png") 0 50%;
+	background: url("../images/amex.png") 0 50% no-repeat;
 	@include transition (all .25s linear);
 }
 .credit-card-group .card-image.mc {
-	background: url("../images/mastercard.png") 0 50%;
+	background: url("../images/mastercard.png") 0 50% no-repeat;
 	@include transition (all .25s linear);
 }
 .credit-card-group .card-image.disc {
-	background: url("../images/discover.png") 0 50%;
+	background: url("../images/discover.png") 0 50% no-repeat;
 	@include transition (all .25s linear);
 }
 .credit-card-group .card-image.cvv2 {
-	background: url("../images/cvv.png") 0 50%;
+	background: url("../images/cvv.png") 0 50% no-repeat;
 	@include transform(rotateY(180deg));
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-	form {
-		width: 100%;
-	}
+
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
@@ -123,24 +140,5 @@
  */
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
-
-	.credit-card-group .card-image {
-		background: url("../images/money_2X.png") 0 50%;
-	}
-	.credit-card-group .card-image.visa {
-		background: url("../images/visa_2X.png") 0 50%;
-	}
-	.credit-card-group .card-image.amex {
-		background: url("../images/amex_2X.png") 0 50%;
-	}
-	.credit-card-group .card-image.mc {
-		background: url("../images/mastercard_2X.png") 0 50%;
-	}
-	.credit-card-group .card-image.disc {
-		background: url("../images/discover_2X.png") 0 50%;
-	}
-	.credit-card-group .card-image.cvv {
-		background: url("../images/cvv_2X.png") 0 50%;
-	}
 
 }

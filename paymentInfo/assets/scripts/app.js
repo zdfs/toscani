@@ -106,7 +106,8 @@
 
 				// We need to get the credit card field and the unmasked value of the field.
 				var element = $("." + opts.cardNumberClass),
-					uvalue = element.inputmask("unmaskedvalue");
+					uvalue = element.inputmask("unmaskedvalue"),
+					ccType = helpers.getCreditCardType(uvalue);
 
 				// Once this function is fired, we need to add a "transitioning" class to credit
 				// card element so that we can take advantage of our CSS animations.
@@ -117,9 +118,7 @@
 				// value prematurely.
 
 				setTimeout(function () {
-					element
-						.removeClass("transitioning")
-						.blur();
+					element.removeClass("transitioning")
 				}, opts.animationWait);
 
 				// Adding this class to the credit card input gives us a smaller width to
@@ -133,29 +132,51 @@
 					// Store the credit card value in data(). Replace the value with the last
 					// four numbers of the card.
 
-					element
-						.data("ccNumber", uvalue)
-						.val(uvalue.substr(uvalue.length - 4, uvalue.length));
+					element.bind("saveValues", function () {
+
+						if ((ccType === "amex" && uvalue.length === 15) || (ccType !== "amex" && uvalue.length === 16)) {
+
+							element
+								.data("ccNumber", uvalue)
+								.val(uvalue.substr(uvalue.length - 4, uvalue.length));
+
+						}
+
+					});
+
+					if (Modernizr.touch) {
+						element
+							.trigger("saveValues")
+							.blur(function () {
+								element.trigger("saveValues");
+							10});
+					}
 
 					// Expose the rest of the payment info fields now that the credit card
 					// has been filled out.
-
 					$("." + opts.fieldsetClass).find("input:gt(0)").removeClass("hide");
 
-					// Wait for the new payment info fields to fade in and then focus on the
-					// credit card expiration input.
+					if (!Modernizr.touch) {
 
-					setTimeout(function () {
+						element.bind("blur", function () {
+							element.trigger("saveValues");
+						}).blur();
+
+						// Focus on the credit card expiration input.
 						$("." + opts.cardExpirationClass).focus();
-					}, opts.focusDelay);
+
+					}
 
 				}, opts.animationWait);
 
 				// After the credit card field is initially filled out, bind a click event
-				// that will allow us to edit the number again if we want to.
+				// that will allow us to edit the number again if we want to. We also bind
+				// a focus event (for mobile) and a keydown event in case of shift + tab
 
-				$(element).bind("click", function () {
-					helpers.beginCreditCard($(element));
+				$(element).bind("focus click keydown", function (e) {
+					if (e.type === "focus" || e.type === "click" || (e.shiftKey && e.keyCode === 9)) {
+						helpers.beginCreditCard($(element));
+					}
 				});
 
 			},
@@ -168,9 +189,9 @@
 
 				$("." + opts.cardImageClass).addClass("cvv2");
 
-				setTimeout(function () {
+				if (!Modernizr.touch) {
 					$("." + opts.cardCvvClass).focus();
-				}, opts.focusDelay);
+				}
 
 			},
 
@@ -182,9 +203,9 @@
 
 				$("." + opts.cardImageClass).removeClass("cvv2");
 
-				setTimeout(function () {
+				if (!Modernizr.touch) {
 					$("." + opts.cardZipClass).focus();
-				}, opts.focusDelay);
+				}
 
 			},
 
@@ -207,10 +228,10 @@
 				// Attach a keypress handler that listens for the "enter" key. If the user
 				// clicks enter, then fire off our creditCardComplete() event.
 
-				$(element).bind("keypress", function (e) {
+				$(element).unbind("blur").bind("keypress blur", function (e) {
 
 					// Is it the enter key?
-					if (e.charCode === 13) {
+					if (e.charCode === 13 || e.type === "blur") {
 
 						var uvalue = $(element).inputmask("unmaskedvalue"),
 							ccType = helpers.getCreditCardType(uvalue);
@@ -222,7 +243,7 @@
 
 					}
 
-				});
+				}).unbind("focus click keydown");
 
 				// Hide the extraneous inputs until the credit card is filled out again.
 				$("." + opts.fieldsetClass).find("input:gt(0)").addClass("hide");
