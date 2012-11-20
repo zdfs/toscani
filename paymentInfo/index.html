@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-	<meta charset="utf-8" />
-	<meta content="width=device-width" name="viewport" />
-	<meta content="yes" name="apple-mobile-web-app-capable" />
-	<script>
-        setTimeout(function(){
-          ws = new WebSocket('ws://localhost:35353')
-          ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
-        }, 500)
-      </script>
-	<link type="text/css" rel="stylesheet" href="assets/css/normalize.css" />
-	<link type="text/css" rel="stylesheet" href="assets/css/demo/demo.css" />
-<link type="text/css" rel="stylesheet" href="assets/css/paymentInfo.css" />
-	<link href="assets/favicon.ico" rel="shortcut icon" />
-	<link href="assets/apple-touch-icon.png" rel="apple-touch-icon" />
+	<meta charset="utf-8">
+	<meta content="width=device-width" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/demo.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/paymentInfo.css">
+	<link rel="shortcut icon" href="assets/favicon.ico">
+	<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 	<title>Payment Info</title>
 </head>
 <body>
-
 	<section>
 		<form>
 			<fieldset class="credit-card-group fixed-width">
-				<input pattern="[0-9]*" type="text" class="card-number" placeholder="1234 5678 9012 3456" />
-				<input pattern="[0-9]*" type="text" class="card-expiration" placeholder="MM/YY" />
-				<input pattern="[0-9]*" type="text" class="card-cvv" placeholder="CVV" />
-				<input pattern="[0-9]*" type="text" class="card-zip" placeholder="ZIP" />
+				<input placeholder="1234 5678 9012 3456" pattern="[0-9]*" type="text" class="card-number">
+				<input placeholder="MM/YY" pattern="[0-9]*" type="text" class="card-expiration">
+				<input placeholder="CVV" pattern="[0-9]*" type="text" class="card-cvv">
+				<input placeholder="ZIP" pattern="[0-9]*" type="text" class="card-zip">
 			</fieldset>
 		</form>
 	</section>
@@ -41,12 +34,10 @@
 			<li>See how graceful the degradation will go.</li>
 		</ul>
 	</section>
-
-	<script src="assets/scripts/libs/modernizr.js" type="text/javascript"></script>
-	<script src="assets/scripts/libs/jquery.js" type="text/javascript"></script>
-	<script src="assets/scripts/libs/jquery.inputmask.js" type="text/javascript"></script>
-	<script src="assets/scripts/libs/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
-	<script src="assets/scripts/app.js" type="text/javascript"></script>
+	<script src="assets/scripts/libs/modernizr.js"></script>
+	<script src="assets/scripts/libs/jquery.js"></script>
+	<script src="assets/scripts/libs/jquery.inputmask.js"></script>
+	<script src="assets/scripts/libs/jquery.inputmask.date.extensions.js"></script>
+	<script src="assets/scripts/app.js"></script>
 </body>
-
 </html>
