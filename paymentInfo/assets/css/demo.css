@@ -1,0 +1,5 @@
+html 					{ background-color: #e7e7e7; }
+body 					{ padding-top: 20px; min-height: 595px; }
+section 				{ margin: 0 5%; width: 90%; }
+section + section 		{ margin-top: 20px; }
+form 					{ margin: 0 auto; }

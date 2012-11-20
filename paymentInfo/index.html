@@ -1,12 +1,24 @@
-<!-- @include _header -->
-
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/demo.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/paymentInfo.css">
+	<link rel="shortcut icon" href="assets/favicon.ico">
+	<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+	<title>Payment Info</title>
+</head>
+<body>
 	<section>
 		<form>
 			<fieldset class="credit-card-group fixed-width">
-				<input type="text" class="card-number" pattern="[0-9]*" placeholder="1234 5678 9012 3456">
-				<input type="text" class="card-expiration" pattern="[0-9]*" placeholder="MM/YY">
-				<input type="text" class="card-cvv" pattern="[0-9]*" placeholder="CVV">
-				<input type="text" class="card-zip" pattern="[0-9]*" placeholder="ZIP">
+				<input placeholder="1234 5678 9012 3456" pattern="[0-9]*" type="text" class="card-number">
+				<input placeholder="MM/YY" pattern="[0-9]*" type="text" class="card-expiration">
+				<input placeholder="CVV" pattern="[0-9]*" type="text" class="card-cvv">
+				<input placeholder="ZIP" pattern="[0-9]*" type="text" class="card-zip">
 			</fieldset>
 		</form>
 	</section>
@@ -22,5 +34,10 @@
 			<li>See how graceful the degradation will go.</li>
 		</ul>
 	</section>
-
-<!-- @include _footer -->
+	<script src="assets/scripts/libs/modernizr.js"></script>
+	<script src="assets/scripts/libs/jquery.js"></script>
+	<script src="assets/scripts/libs/jquery.inputmask.js"></script>
+	<script src="assets/scripts/libs/jquery.inputmask.date.extensions.js"></script>
+	<script src="assets/scripts/app.js"></script>
+</body>
+</html>
