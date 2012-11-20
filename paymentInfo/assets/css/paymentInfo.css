@@ -103,39 +103,24 @@
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   -o-transform-style: preserve-3d;
-  transform-style: preserve-3d; }
+  transform-style: preserve-3d;
+  -webkit-transition: all 0.25s linear;
+  -moz-transition: all 0.25s linear;
+  -ms-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear; }
 
 .credit-card-group .card-image.visa {
-  background: url(../images/visa.png) 0 50% no-repeat;
-  -webkit-transition: all 0.25s linear;
-  -moz-transition: all 0.25s linear;
-  -ms-transition: all 0.25s linear;
-  -o-transition: all 0.25s linear;
-  transition: all 0.25s linear; }
+  background: url(../images/visa.png) 0 50% no-repeat; }
 
 .credit-card-group .card-image.amex {
-  background: url(../images/amex.png) 0 50% no-repeat;
-  -webkit-transition: all 0.25s linear;
-  -moz-transition: all 0.25s linear;
-  -ms-transition: all 0.25s linear;
-  -o-transition: all 0.25s linear;
-  transition: all 0.25s linear; }
+  background: url(../images/amex.png) 0 50% no-repeat; }
 
 .credit-card-group .card-image.mc {
-  background: url(../images/mastercard.png) 0 50% no-repeat;
-  -webkit-transition: all 0.25s linear;
-  -moz-transition: all 0.25s linear;
-  -ms-transition: all 0.25s linear;
-  -o-transition: all 0.25s linear;
-  transition: all 0.25s linear; }
+  background: url(../images/mastercard.png) 0 50% no-repeat; }
 
 .credit-card-group .card-image.disc {
-  background: url(../images/discover.png) 0 50% no-repeat;
-  -webkit-transition: all 0.25s linear;
-  -moz-transition: all 0.25s linear;
-  -ms-transition: all 0.25s linear;
-  -o-transition: all 0.25s linear;
-  transition: all 0.25s linear; }
+  background: url(../images/discover.png) 0 50% no-repeat; }
 
 .credit-card-group .card-image.cvv2 {
   background: url(../images/cvv.png) 0 50% no-repeat;
@@ -217,6 +202,9 @@
     transform: translateX(10px); } }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .js .credit-card-group {
+    padding: 5px; }
+
   .js .credit-card-group.fixed-width {
     max-width: 100%; }
 
