@@ -2,30 +2,30 @@
 <html class="no-js" lang="en">
 <head>
 	<meta charset="utf-8" />
-	<meta content="width=device-width" name="viewport" />
-	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<script>
         setTimeout(function(){
           ws = new WebSocket('ws://localhost:35353')
           ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
         }, 500)
       </script>
-	<link href="assets/css/normalize.css" type="text/css" rel="stylesheet" />
-	<link href="assets/css/demo/demo.css" type="text/css" rel="stylesheet" />
-<link href="assets/css/paymentInfo.css" type="text/css" rel="stylesheet" />
-	<link href="assets/favicon.ico" rel="shortcut icon" />
-	<link href="assets/apple-touch-icon.png" rel="apple-touch-icon" />
+	<link rel="stylesheet" href="assets/css/normalize.css" type="text/css" />
+	<link rel="stylesheet" href="assets/css/demo/demo.css" type="text/css" />
+<link rel="stylesheet" href="assets/css/paymentInfo.css" type="text/css" />
+	<link rel="shortcut icon" href="assets/favicon.ico" />
+	<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 	<title>Payment Info</title>
 </head>
 <body>
 
 	<section>
 		<form>
-			<fieldset class="credit-card-group">
-				<input pattern="[0-9]*" class="card-number" type="text" placeholder="1234 5678 9012 3456" />
-				<input pattern="[0-9]*" class="card-expiration" type="text" placeholder="MM/YY" />
-				<input pattern="[0-9]*" class="card-cvv" type="text" placeholder="CVV" />
-				<input pattern="[0-9]*" class="card-zip" type="text" placeholder="ZIP" />
+			<fieldset class="credit-card-group fixed-width">
+				<input class="card-number" placeholder="1234 5678 9012 3456" type="text" pattern="[0-9]*" />
+				<input class="card-expiration" placeholder="MM/YY" type="text" pattern="[0-9]*" />
+				<input class="card-cvv" placeholder="CVV" type="text" pattern="[0-9]*" />
+				<input class="card-zip" placeholder="ZIP" type="text" pattern="[0-9]*" />
 			</fieldset>
 		</form>
 	</section>
@@ -42,7 +42,6 @@
 		<ul>
 			<li>Support Canadian postal code formats like "T2X1V4".</li>
 			<li>If a number is not allowed via the mask, then shake the field a bit to indicate something is wrong. <span style="text-decoration: line-through;">Will need to submit a request to the inputmask project for an event hook.</span></li>
-			<li>Add a style for errors.</li>
 			<li>Use SVG icons and then use PNGs as a fallback.</li>
 			<li>Have better mobile styles.</li>
 		</ul>
