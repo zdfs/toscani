@@ -1,5 +1,5 @@
 /* ======================================
- * SASS MIXINS STYLES
+ * SASS HELPERS
  * ======================================
  */
 /* ======================================
@@ -42,6 +42,8 @@
   -moz-perspective: 1000;
   -o-perspective: 1000;
   perspective: 1000;
+  -webkit-box-shadow: 0 0 7px #c8c8c8 inset, 0 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 7px #c8c8c8 inset, 0 1px rgba(0, 0, 0, 0.1);
   background: #FFF;
   border-radius: 5px;
   overflow: hidden;
@@ -49,6 +51,7 @@
   width: 100%; }
 
 .js .credit-card-group input {
+  background: transparent;
   border: 0;
   outline: 0;
   padding: 0;
@@ -238,3 +241,22 @@
  * RETINA SUPPORT
  * ======================================
  */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+  .credit-card-group .card-image {
+    background: url(../images/money_2X.png) 0 50% no-repeat;
+    background-size: 30px 19px; }
+
+  .credit-card-group .card-image.visa {
+    background: url(../images/visa_2X.png) 0 50% no-repeat; }
+
+  .credit-card-group .card-image.amex {
+    background: url(../images/amex_2X.png) 0 50% no-repeat; }
+
+  .credit-card-group .card-image.mc {
+    background: url(../images/mastercard_2X.png) 0 50% no-repeat; }
+
+  .credit-card-group .card-image.disc {
+    background: url(../images/discover_2X.png) 0 50% no-repeat; }
+
+  .credit-card-group .card-image.cvv2 {
+    background: url(../images/cvv_2X.png) 0 50% no-repeat; } }
