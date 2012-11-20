@@ -190,6 +190,9 @@
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+	.js .credit-card-group {
+		padding: 5px;
+	}
 	.js .credit-card-group.fixed-width {
 		max-width: 100%;
 	}
