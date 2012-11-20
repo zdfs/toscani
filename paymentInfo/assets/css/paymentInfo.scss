@@ -110,22 +110,20 @@
 	-o-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 
+	@include transition (all .25s linear);
+
 }
 .credit-card-group .card-image.visa {
 	background: url("../images/visa.png") 0 50% no-repeat;
-	@include transition (all .25s linear);
 }
 .credit-card-group .card-image.amex {
 	background: url("../images/amex.png") 0 50% no-repeat;
-	@include transition (all .25s linear);
 }
 .credit-card-group .card-image.mc {
 	background: url("../images/mastercard.png") 0 50% no-repeat;
-	@include transition (all .25s linear);
 }
 .credit-card-group .card-image.disc {
 	background: url("../images/discover.png") 0 50% no-repeat;
-	@include transition (all .25s linear);
 }
 .credit-card-group .card-image.cvv2 {
 	background: url("../images/cvv.png") 0 50% no-repeat;
