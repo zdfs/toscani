@@ -100,6 +100,10 @@
 					$("." + opts.fieldsetClass).find("input:gt(0)").val("");
 				}
 
+				if (ccType !== undefined) {
+					$(el).parents("." + opts.fieldsetClass).removeClass("invalid shake");
+				}
+
 			},
 
 			creditCardComplete: function () {
@@ -108,6 +112,12 @@
 				var element = $("." + opts.cardNumberClass),
 					uvalue = element.inputmask("unmaskedvalue"),
 					ccType = helpers.getCreditCardType(uvalue);
+
+				// Let's make sure the card is valid
+				if (ccType === undefined) {
+					$(element).parents("." + opts.fieldsetClass).addClass("invalid shake");
+					return;
+				}
 
 				// Once this function is fired, we need to add a "transitioning" class to credit
 				// card element so that we can take advantage of our CSS animations.
@@ -189,8 +199,12 @@
 
 				$("." + opts.cardImageClass).addClass("cvv2");
 
+				$("." + opts.cardExpirationClass).addClass("full");
+
 				if (!Modernizr.touch) {
-					$("." + opts.cardCvvClass).focus();
+					setTimeout(function () {
+						$("." + opts.cardCvvClass).focus();
+					}, 220);
 				}
 
 			},
@@ -203,14 +217,21 @@
 
 				$("." + opts.cardImageClass).removeClass("cvv2");
 
+				$("." + opts.cardCvvClass).addClass("full");
+
 				if (!Modernizr.touch) {
 					$("." + opts.cardZipClass).focus();
 				}
 
 			},
 
-			// This function allows us to edit the credit card number once it's been entered.
+			zipComplete: function () {
 
+				$("." + opts.cardZipClass).addClass("full");
+
+			},
+
+			// This function allows us to edit the credit card number once it's been entered.
 			beginCreditCard: function (element) {
 
 				// Set the value of the field to the original card number and apply our
@@ -290,7 +311,7 @@
 							})
 						.end()
 						.find("." + opts.cardZipClass)
-							.inputmask({ mask: "99999" })
+							.inputmask({ mask: "99999", oncomplete: helpers.zipComplete })
 							.addClass("hide")
 						.end();
 
