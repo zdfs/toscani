@@ -26,6 +26,7 @@
 		<h3>Notes</h3>
 		<ul>
 			<li>Right now, the two-digit year only allows for 12-29. Which is fine, but there's no support for automatically updating this when the year changes. We would have to update the mask manually. Might be better to leave it alone and allow server/client validation to handle this case in production.</li>
+			<li>Auto-focus only works on the Desktop and stand-alone webapps. iOS won't allow auto-focus within Safari. However, auto-focus in an iOS stand-alone webapp will feel jumpy due to iOS trying to hide the keyboard only to have it reappear. No way to just leave the keyboard up while auto-focusing.</li>
 		</ul>
 		<h3>Refinements</h3>
 		<ul>
