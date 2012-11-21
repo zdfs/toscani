@@ -172,9 +172,6 @@
 							element.trigger("saveValues");
 						}).blur();
 
-						// Focus on the credit card expiration input.
-						$("." + opts.cardExpirationClass).focus();
-
 					}
 
 				}, opts.animationWait);
@@ -189,6 +186,11 @@
 					}
 				});
 
+				if (window.navigator.standalone || !Modernizr.touch) {
+					// Focus on the credit card expiration input.
+					$("." + opts.cardExpirationClass).focus();
+				}
+
 			},
 
 			// This function is fired  when the credit card expiration field's mask has been
@@ -201,7 +203,7 @@
 
 				$("." + opts.cardExpirationClass).addClass("full");
 
-				if (!Modernizr.touch) {
+				if (window.navigator.standalone || !Modernizr.touch) {
 					setTimeout(function () {
 						$("." + opts.cardCvvClass).focus();
 					}, 220);
@@ -219,9 +221,11 @@
 
 				$("." + opts.cardCvvClass).addClass("full");
 
-				if (!Modernizr.touch) {
+				if (window.navigator.standalone || !Modernizr.touch) {
+					// Focus on the credit card expiration input.
 					$("." + opts.cardZipClass).focus();
 				}
+
 
 			},
 
