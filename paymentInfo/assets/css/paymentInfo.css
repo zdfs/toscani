@@ -53,7 +53,7 @@
 .js .credit-card-group input {
 	background: transparent;
 	border: 0;
-	outline: 0;
+
 	padding: 0;
 	vertical-align: 13%;
 }
@@ -94,12 +94,12 @@
 	position: relative;
 	width: 30px;
 	z-index: 2;
-	
+
 	-webkit-transform-style: preserve-3d;
 	-moz-transform-style: preserve-3d;
 	-o-transform-style: preserve-3d;
 	transform-style: preserve-3d;
-	
+
 	-webkit-transition: all 0.25s linear;
 	-moz-transition: all 0.25s linear;
 	-ms-transition: all 0.25s linear;
