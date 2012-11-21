@@ -288,7 +288,6 @@
 				$.extend($.inputmask.defaults, {
 					placeholder: " ",
 					showMaskOnHover: false,
-					clearIncomplete: true,
 					overrideFocus: true
 				});
 
