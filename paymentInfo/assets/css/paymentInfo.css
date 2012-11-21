@@ -173,7 +173,7 @@
   40%, 80% { transform: translateX(10px); }
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+@media only screen and (min-device-width: 320px) {
 	form 											{ margin: 0 !important;}
 	.js .credit-card-group							{ padding: 5px; }
 	.js .credit-card-group.fixed-width				{ max-width: 100%; }
