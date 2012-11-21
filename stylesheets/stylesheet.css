@@ -246,8 +246,7 @@ blockquote {
 }
 
 ul li {
-  list-style: disc inside;
-  padding-left: 20px;
+  list-style: disc outside;
 }
 
 ol li {
