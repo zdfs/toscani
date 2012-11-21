@@ -1,44 +1,65 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-<head>
-	<meta charset="utf-8">
-	<meta content="width=device-width" name="viewport">
-	<meta content="yes" name="apple-mobile-web-app-capable">
-	<link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/demo.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/paymentInfo.css">
-	<link rel="shortcut icon" href="assets/favicon.ico">
-	<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-	<title>Payment Info</title>
-</head>
-<body>
-	<section>
-		<form>
-			<fieldset class="credit-card-group fixed-width">
-				<input placeholder="1234 5678 9012 3456" pattern="[0-9]*" type="text" class="card-number">
-				<input placeholder="MM/YY" pattern="[0-9]*" type="text" class="card-expiration">
-				<input placeholder="CVV" pattern="[0-9]*" type="text" class="card-cvv">
-				<input placeholder="ZIP" pattern="[0-9]*" type="text" class="card-zip">
-			</fieldset>
-		</form>
-	</section>
-	<section>
-		<h3>Notes</h3>
-		<ul>
-			<li>Right now, the two-digit year only allows for 12-29. Which is fine, but there's no support for automatically updating this when the year changes. We would have to update the mask manually. Might be better to leave it alone and allow server/client validation to handle this case in production.</li>
-			<li>Auto-focus only works on the Desktop and stand-alone webapps. iOS won't allow auto-focus within Safari. However, auto-focus in an iOS stand-alone webapp will feel jumpy due to iOS trying to hide the keyboard only to have it reappear. No way to just leave the keyboard up while auto-focusing.</li>
-		</ul>
-		<h3>Refinements</h3>
-		<ul>
-			<li><span style="background-color: yellow">Maybe:</span> Support Canadian postal code formats like "T2X1V4".</li>
-			<li><span style="background-color: gray">Pending:</span> If a number is not allowed via the mask, then shake the field a bit to indicate something is wrong. <span style="text-decoration: line-through;">Will need to submit a request to the inputmask project for an event hook.</span></li>
-			<li>See how graceful the degradation will go.</li>
-		</ul>
-	</section>
-	<script src="assets/scripts/libs/modernizr.js"></script>
-	<script src="assets/scripts/libs/jquery.js"></script>
-	<script src="assets/scripts/libs/jquery.inputmask.js"></script>
-	<script src="assets/scripts/libs/jquery.inputmask.date.extensions.js"></script>
-	<script src="assets/scripts/app.js"></script>
-</body>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+		<link rel="stylesheet" type="text/css" href="assets/css/paymentInfo.css">
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<title>Toscani: Payment Info Experiment</title>
+	</head>
+
+	<body>
+		<div id="container">
+			<div class="inner">
+				<header>
+					<h1>Payment Info</h1>
+					<h2>Inspired by Square Wallet</h2>
+				</header>
+				<section id="downloads" class="clearfix">
+					<a href="https://github.com/zdfs/toscani/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+					<a href="https://github.com/zdfs/toscani/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+					<a href="https://github.com/zdfs/toscani" id="view-on-github" class="button"><span>View on GitHub</span></a>
+				</section>
+				<hr>
+				<section id="main_content">
+					<form>
+						<fieldset class="credit-card-group fixed-width">
+							<input placeholder="1234 5678 9012 3456" pattern="[0-9]*" type="text" class="card-number">
+							<input placeholder="MM/YY" pattern="[0-9]*" type="text" class="card-expiration">
+							<input placeholder="CVV" pattern="[0-9]*" type="text" class="card-cvv">
+							<input placeholder="ZIP" pattern="[0-9]*" type="text" class="card-zip">
+						</fieldset>
+					</form>
+				</section>
+				<section>
+					<h3>Notes</h3>
+					<ul>
+						<li>Right now, the two-digit year only allows for 12-29. Which is fine, but there's no support for automatically updating this when the year changes. We would have to update the mask manually. Might be better to leave it alone and allow server/client validation to handle this case in production.</li>
+						<li>Auto-focus only works on the Desktop and stand-alone webapps. iOS won't allow auto-focus within Safari. However, auto-focus in an iOS stand-alone webapp will feel jumpy due to iOS trying to hide the keyboard only to have it reappear. No way to just leave the keyboard up while auto-focusing.</li>
+					</ul>
+					<h3>Refinements</h3>
+					<ul>
+						<li><span style="background-color: yellow">Maybe:</span> Support Canadian postal code formats like "T2X1V4".</li>
+						<li><span style="background-color: gray">Pending:</span> If a number is not allowed via the mask, then shake the field a bit to indicate something is wrong. <span style="text-decoration: line-through;">Will need to submit a request to the inputmask project for an event hook.</span></li>
+						<li>See how graceful the degradation will go.</li>
+					</ul>
+				</section>
+				<footer>
+					Toscani is maintained by <a href="https://github.com/zdfs">zdfs</a><br>
+					This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
+				</footer>
+			</div>
+		</div>
+		<script src="assets/scripts/libs/modernizr.js"></script>
+		<script src="assets/scripts/libs/jquery.js"></script>
+		<script src="assets/scripts/libs/jquery.inputmask.js"></script>
+		<script src="assets/scripts/libs/jquery.inputmask.date.extensions.js"></script>
+		<script src="assets/scripts/app.js"></script>
+	</body>
 </html>
