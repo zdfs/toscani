@@ -174,7 +174,7 @@
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
-	form 											{ margin: 0 0 20px; padding: 0; }
+	#container form 								{ margin: 0 0 20px !important; padding: 0; }
 	.js .credit-card-group							{ padding: 5px; }
 	.js .credit-card-group.fixed-width				{ max-width: 100%; }
 	.js .credit-card-group input					{ font-size: 19px; }
