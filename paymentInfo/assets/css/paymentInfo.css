@@ -35,6 +35,7 @@
  * ======================================
  */
 .js .credit-card-group {
+	-webkit-backface-visibility: hidden;
 	-webkit-perspective: 1000;
 	-moz-perspective: 1000;
 	-o-perspective: 1000;
@@ -45,9 +46,10 @@
 	box-shadow: 0 0 7px #c8c8c8 inset, 0 1px rgba(0, 0, 0, 0.1);
 	background: #FFF;
 	border-radius: 5px;
+	margin: 0 auto;
 	overflow: hidden;
 	padding: 0;
-	width: 100%;
+	width: 250px;
 }
 
 .js .credit-card-group input {
@@ -59,18 +61,15 @@
 }
 
 .js .credit-card-group input.card-number {
-	width: -moz-calc(100% - 44px);
-	width: -o-calc(100% - 44px);
-	width: -webkit-calc(100% - 44px);
-	width: calc(100% - 44px);
+	width: 206px;
 }
 
 .js .credit-card-group input.card-number.transitioning-out {
-	-webkit-transition: all .75s ease-out;
-	-moz-transition: all .75s ease-out;
-	-ms-transition: all .75s ease-out;
-	-o-transition: all .75s ease-out;
-	transition: all .75s ease-out;
+	-webkit-transition: all 500ms ease-out;
+	-moz-transition: all 500ms ease-out;
+	-ms-transition: all 500ms ease-out;
+	-o-transition: all 500ms ease-out;
+	transition: all 500ms ease-out;
 	-webkit-transform: translateX(-60.5%);
 	-moz-transform: translateX(-60.5%);
 	-ms-transform: translateX(-60.5%);
@@ -83,10 +82,7 @@
 	-ms-transition: width 0s linear;
 	-o-transition: width 0s linear;
 	transition: width 0s linear;
-	width: -moz-calc(100% - 44px);
-	width: -o-calc(100% - 44px);
-	width: -webkit-calc(100% - 44px);
-	width: calc(100% - 44px);
+	width: 206px;
 }
 
 .js .credit-card-group input.card-expiration		{ width: 21.5%; }
@@ -131,8 +127,6 @@
 	-o-transform: rotateY(180deg);
 	transform: rotateY(180deg);
 }
-
-.credit-card-group.fixed-width						{ max-width: 250px; margin: 0 auto; }
 
 .credit-card-group.invalid							{ border: 1px solid #A51D33; }
 .credit-card-group.invalid input					{ color: #A51D33; }
@@ -185,10 +179,8 @@
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
-	.js .credit-card-group							{ margin: 0 0 20px; padding: 5px; }
-	.js .credit-card-group.fixed-width				{ max-width: 100%; }
-	.js .credit-card-group input					{ font-size: 19px; }
-	.js .credit-card-group input					{ vertical-align: 5%; }
+	.js .credit-card-group							{ margin: 0 0 20px; padding: 5px; width: 100%;}
+	.js .credit-card-group input					{ font-size: 19px; vertical-align: 5% }
 	.js .credit-card-group input.card-expiration	{ width: 25%; }
 	.js .credit-card-group input.card-zip 			{ width: 21%; }
 	.js .credit-card-group input.card-cvv			{ width: 17%; }
