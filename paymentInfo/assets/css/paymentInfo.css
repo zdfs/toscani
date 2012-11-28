@@ -65,17 +65,28 @@
 	width: calc(100% - 44px);
 }
 
-.js .credit-card-group input.card-number.transitioning {
-	-webkit-transition: all 0.2s ease-in-out;
-	-moz-transition: all 0.2s ease-in-out;
-	-ms-transition: all 0.2s ease-in-out;
-	-o-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
-	-webkit-transform: translateX(-0.5rem);
-	-moz-transform: translateX(-0.5rem);
-	-ms-transform: translateX(-0.5rem);
-	-o-transform: translateX(-0.5rem);
-	transform: translateX(-0.5rem);
+.js .credit-card-group input.card-number.transitioning-out {
+	-webkit-transition: all .75s ease-out;
+	-moz-transition: all .75s ease-out;
+	-ms-transition: all .75s ease-out;
+	-o-transition: all .75s ease-out;
+	transition: all .75s ease-out;
+	-webkit-transform: translateX(-60.5%);
+	-moz-transform: translateX(-60.5%);
+	-ms-transform: translateX(-60.5%);
+	-o-transform: translateX(-60.5%);
+	transform: translateX(-60.5%);
+}
+.js .credit-card-group input.card-number.transitioning-in {
+	-webkit-transition: width 0s linear;
+	-moz-transition: width 0s linear;
+	-ms-transition: width 0s linear;
+	-o-transition: width 0s linear;
+	transition: width 0s linear;
+	width: -moz-calc(100% - 44px);
+	width: -o-calc(100% - 44px);
+	width: -webkit-calc(100% - 44px);
+	width: calc(100% - 44px);
 }
 
 .js .credit-card-group input.card-expiration		{ width: 21.5%; }
@@ -87,7 +98,7 @@
 .js .credit-card-group input.card-number.full		{ width: 15%; }
 
 .credit-card-group .card-image {
-	background: url(../images/money.png) 50% 50% no-repeat;
+	background: white url(../images/money.png) 50% 50% no-repeat;
 	display: inline-block;
 	height: 19px;
 	margin: 3px 5px 0 3px;
@@ -173,11 +184,7 @@
   40%, 80% { transform: translateX(10px); }
 }
 
-@media only screen and (max-width: 480px) {
-	#container form 								{ margin: 0 0 20px !important; padding: 0; }
-}
-
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
 	.js .credit-card-group							{ padding: 5px; }
 	.js .credit-card-group.fixed-width				{ max-width: 100%; }
 	.js .credit-card-group input					{ font-size: 19px; }

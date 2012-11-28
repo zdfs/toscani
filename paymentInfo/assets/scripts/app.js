@@ -119,52 +119,35 @@
 					return;
 				}
 
+				// Store the credit card value in data(). Replace the value with the last
+				// four numbers of the card.
+
+				element.bind("saveValues", function () {
+
+					if ((ccType === "amex" && uvalue.length === 15) || (ccType !== "amex" && uvalue.length === 16)) {
+
+						element
+							.data("ccNumber", uvalue)
+							.val(uvalue.substr(uvalue.length - 4, uvalue.length));
+
+					}
+
+				});
+
 				// Once this function is fired, we need to add a "transitioning" class to credit
 				// card element so that we can take advantage of our CSS animations.
-				element.addClass("transitioning");
+
+				if (!Modernizr.touch) {
+					element.addClass("transitioning-out");
+				}
 
 				// We have to set a timeout so that we give our animations time to finish. We have to
 				// blur the element as well to fix a bug where our credit card field was losing its
 				// value prematurely.
 
 				setTimeout(function () {
-					element.removeClass("transitioning")
-				}, opts.animationWait);
 
-				// Adding this class to the credit card input gives us a smaller width to
-				// transition down to.
-
-				element.addClass("full");
-
-				// Setting another timeout so that we can wait for CSS animations to finish.
-				setTimeout(function () {
-
-					// Store the credit card value in data(). Replace the value with the last
-					// four numbers of the card.
-
-					element.bind("saveValues", function () {
-
-						if ((ccType === "amex" && uvalue.length === 15) || (ccType !== "amex" && uvalue.length === 16)) {
-
-							element
-								.data("ccNumber", uvalue)
-								.val(uvalue.substr(uvalue.length - 4, uvalue.length));
-
-						}
-
-					});
-
-					if (Modernizr.touch) {
-						element
-							.trigger("saveValues")
-							.blur(function () {
-								element.trigger("saveValues");
-							10});
-					}
-
-					// Expose the rest of the payment info fields now that the credit card
-					// has been filled out.
-					$("." + opts.fieldsetClass).find("input:gt(0)").removeClass("hide");
+					element.removeClass("transitioning-out");
 
 					if (!Modernizr.touch) {
 
@@ -172,7 +155,24 @@
 							element.trigger("saveValues");
 						}).blur();
 
+					} else {
+						element
+							.trigger("saveValues")
+							.blur(function () {
+								element.trigger("saveValues");
+							});
 					}
+
+					element.addClass("full");
+
+				}, 750);
+
+				// Setting another timeout so that we can wait for CSS animations to finish.
+				setTimeout(function () {
+
+					// Expose the rest of the payment info fields now that the credit card
+					// has been filled out.
+					$("." + opts.fieldsetClass).find("input:gt(0)").removeClass("hide");
 
 				}, opts.animationWait);
 
@@ -180,7 +180,7 @@
 				// that will allow us to edit the number again if we want to. We also bind
 				// a focus event (for mobile) and a keydown event in case of shift + tab
 
-				$(element).bind("focus click keydown", function (e) {
+				$(element).unbind("blur focus click keydown keypress").bind("focus click keydown", function (e) {
 					if (e.type === "focus" || e.type === "click" || (e.shiftKey && e.keyCode === 9)) {
 						helpers.beginCreditCard($(element));
 					}
@@ -188,7 +188,10 @@
 
 				if (window.navigator.standalone || !Modernizr.touch) {
 					// Focus on the credit card expiration input.
-					$("." + opts.cardExpirationClass).focus();
+					$("." + opts.cardExpirationClass)
+						// We need to reinitialize the mask for some reason. Can't type otherwise.
+						.inputmask({ mask: "m/q", oncomplete: helpers.expirationComplete })
+						.focus();
 				}
 
 			},
@@ -201,7 +204,17 @@
 
 				$("." + opts.cardImageClass).addClass("cvv2");
 
-				$("." + opts.cardExpirationClass).addClass("full");
+				$("." + opts.cardExpirationClass)
+					.addClass("full")
+					.unbind("keydown blur")
+					.bind("keydown", function (e) {
+						if (e.keyCode === 8 && $(this).val() === "") {
+							$(this).removeClass("full");
+							if (window.navigator.standalone || !Modernizr.touch) {
+								$("." + opts.cardNumberClass).focus();
+							}
+						}
+					});
 
 				if (window.navigator.standalone || !Modernizr.touch) {
 					setTimeout(function () {
@@ -219,7 +232,18 @@
 
 				$("." + opts.cardImageClass).removeClass("cvv2");
 
-				$("." + opts.cardCvvClass).addClass("full");
+				$("." + opts.cardCvvClass)
+					.addClass("full")
+					.unbind("keydown blur")
+					.bind("keydown", function (e) {
+						if (e.keyCode === 8 && $(this).val() === "") {
+							$(this).removeClass("full");
+							$("." + opts.cardImageClass).removeClass("cvv2");
+							if (window.navigator.standalone || !Modernizr.touch) {
+								$("." + opts.cardExpirationClass).focus();
+							}
+						}
+					});
 
 				if (window.navigator.standalone || !Modernizr.touch) {
 					// Focus on the credit card expiration input.
@@ -231,7 +255,18 @@
 
 			zipComplete: function () {
 
-				$("." + opts.cardZipClass).addClass("full");
+				$("." + opts.cardZipClass)
+					.addClass("full")
+					.unbind("keydown blur")
+					.bind("keydown", function (e) {
+						if (e.keyCode === 8 && $(this).val() === "") {
+							$(this).removeClass("full");
+							if (window.navigator.standalone || !Modernizr.touch) {
+								$("." + opts.cardCvvClass).focus();
+							}
+						}
+					})
+					.inputmask({ mask: "99999" })
 
 			},
 
@@ -243,17 +278,17 @@
 
 				$(element)
 					.val($(element).data("ccNumber"))
-					.addClass("transitioning");
+					.addClass("transitioning-in");
 
 				// Wait for the animation to complete and then remove our classes.
 				setTimeout(function () {
-					element.removeClass("transitioning full");
-				}, opts.animationWait);
+					element.removeClass("transitioning-in full");
+				}, 150);
 
 				// Attach a keypress handler that listens for the "enter" key. If the user
 				// clicks enter, then fire off our creditCardComplete() event.
 
-				$(element).unbind("blur").bind("keypress blur", function (e) {
+				$(element).unbind("keypress blur").bind("keypress blur", function (e) {
 
 					// Is it the enter key?
 					if (e.charCode === 13 || e.type === "blur") {
@@ -351,7 +386,7 @@
 		cardExpirationClass: "card-expiration",
 		cardZipClass: "card-zip",
 		cardNumberClass: "card-number",
-		animationWait: 300,
+		animationWait: 1200,
 		focusDelay: 200
 	};
 
