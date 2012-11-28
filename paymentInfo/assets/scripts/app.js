@@ -296,7 +296,6 @@
 
 						// Make sure the number length is valid
 						if ((ccType === "amex" && uvalue.length === 15) || (ccType !== "amex" && uvalue.length === 16)) {
-							console.log("here");
 							helpers.creditCardComplete();
 						}
 
