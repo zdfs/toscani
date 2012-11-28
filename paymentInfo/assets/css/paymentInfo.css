@@ -36,6 +36,10 @@
  */
 .js .credit-card-group {
 	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+
 	-webkit-perspective: 1000;
 	-moz-perspective: 1000;
 	-o-perspective: 1000;
@@ -49,12 +53,13 @@
 	margin: 0 auto;
 	overflow: hidden;
 	padding: 0;
-	width: 250px;
+	width: 265px;
 }
 
 .js .credit-card-group input {
 	background: transparent;
 	border: 0;
+	box-shadow: none;
 	outline: 0;
 	padding: 0;
 	vertical-align: 13%;
