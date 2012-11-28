@@ -132,7 +132,7 @@
 	transform: rotateY(180deg);
 }
 
-.credit-card-group.fixed-width						{ max-width: 250px; margin: 0 auto; }
+.credit-card-group.fixed-width						{ max-width: 250px; margin: 0 auto 20px; }
 
 .credit-card-group.invalid							{ border: 1px solid #A51D33; }
 .credit-card-group.invalid input					{ color: #A51D33; }
