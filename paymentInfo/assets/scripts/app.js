@@ -137,9 +137,7 @@
 				// Once this function is fired, we need to add a "transitioning" class to credit
 				// card element so that we can take advantage of our CSS animations.
 
-				if (!Modernizr.touch) {
-					element.addClass("transitioning-out");
-				}
+				element.addClass("transitioning-out");
 
 				// We have to set a timeout so that we give our animations time to finish. We have to
 				// blur the element as well to fix a bug where our credit card field was losing its
@@ -165,7 +163,7 @@
 
 					element.addClass("full");
 
-				}, 750);
+				}, opts.animationWait);
 
 				// Setting another timeout so that we can wait for CSS animations to finish.
 				setTimeout(function () {
@@ -291,13 +289,14 @@
 				$(element).unbind("keypress blur").bind("keypress blur", function (e) {
 
 					// Is it the enter key?
-					if (e.charCode === 13 || e.type === "blur") {
+					if (e.keyCode === 13 || e.type === "blur") {
 
 						var uvalue = $(element).inputmask("unmaskedvalue"),
 							ccType = helpers.getCreditCardType(uvalue);
 
 						// Make sure the number length is valid
 						if ((ccType === "amex" && uvalue.length === 15) || (ccType !== "amex" && uvalue.length === 16)) {
+							console.log("here");
 							helpers.creditCardComplete();
 						}
 
@@ -386,7 +385,7 @@
 		cardExpirationClass: "card-expiration",
 		cardZipClass: "card-zip",
 		cardNumberClass: "card-number",
-		animationWait: 1200,
+		animationWait: 600,
 		focusDelay: 200
 	};
 
