@@ -189,9 +189,9 @@
 	.js .credit-card-group.fixed-width				{ max-width: 100%; }
 	.js .credit-card-group input					{ font-size: 19px; }
 	.js .credit-card-group input					{ vertical-align: 5%; }
-	.js .credit-card-group input.card-expiration	{ width: 21.5%; }
-	.js .credit-card-group input.card-zip 			{ width: 20%; }
-	.js .credit-card-group input.card-cvv			{ width: 18%; }
+	.js .credit-card-group input.card-expiration	{ width: 25%; }
+	.js .credit-card-group input.card-zip 			{ width: 21%; }
+	.js .credit-card-group input.card-cvv			{ width: 17%; }
 	.js .credit-card-group input.card-number.full	{ width: 16.8%; }
 }
 
