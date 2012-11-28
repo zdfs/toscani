@@ -42,7 +42,7 @@ header h2 {
 }
 
 .inner {
-  width: 620px;
+  width: 675px;
   margin: 0 auto;
 }
 
@@ -69,7 +69,7 @@ a.button {
   padding: 12px 8px 12px 8px;
   display: block;
   float: left;
-  width: 179px;
+  width: 196px;
   margin-right: 14px;
   background: #fdfdfd; /* Old browsers */
   background: -moz-linear-gradient(top,  #fdfdfd 0%, #f2f2f2 100%); /* FF3.6+ */
