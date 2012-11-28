@@ -184,7 +184,7 @@
   40%, 80% { transform: translateX(10px); }
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
 	.js .credit-card-group							{ margin: 0 auto; padding: 5px; }
 	.js .credit-card-group.fixed-width				{ max-width: 100%; }
 	.js .credit-card-group input					{ font-size: 19px; }
