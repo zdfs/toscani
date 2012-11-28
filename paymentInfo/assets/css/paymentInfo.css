@@ -132,7 +132,7 @@
 	transform: rotateY(180deg);
 }
 
-.credit-card-group.fixed-width						{ max-width: 250px; margin: 0 auto 20px; }
+.credit-card-group.fixed-width						{ max-width: 250px; margin: 0 auto; }
 
 .credit-card-group.invalid							{ border: 1px solid #A51D33; }
 .credit-card-group.invalid input					{ color: #A51D33; }
@@ -185,7 +185,7 @@
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
-	.js .credit-card-group							{ margin: 0; padding: 5px; }
+	.js .credit-card-group							{ margin: 0 0 20px; padding: 5px; }
 	.js .credit-card-group.fixed-width				{ max-width: 100%; }
 	.js .credit-card-group input					{ font-size: 19px; }
 	.js .credit-card-group input					{ vertical-align: 5%; }
