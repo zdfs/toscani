@@ -70,16 +70,22 @@
 }
 
 .js .credit-card-group input.card-number.transitioning-out {
-	-webkit-transition: all 500ms ease-out;
-	-moz-transition: all 500ms ease-out;
-	-ms-transition: all 500ms ease-out;
-	-o-transition: all 500ms ease-out;
-	transition: all 500ms ease-out;
-	-webkit-transform: translateX(-60.5%);
-	-moz-transform: translateX(-60.5%);
-	-ms-transform: translateX(-60.5%);
-	-o-transform: translateX(-60.5%);
-	transform: translateX(-60.5%);
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-iteration-count: 1;
+	-o-animation-iteration-count: 1;
+	animation-iteration-count: 1;
+	-webkit-animation-duration: .4s;
+	-moz-animation-duration: .4s;
+	-o-animation-duration: .4s;
+	animation-duration: .4s;
+	-webkit-animation-fill-mode: both;
+	-moz-animation-fill-mode: both;
+	-o-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-name: slide;
+	-moz-animation-name: slide;
+	-o-animation-name: slide;
+	animation-name: slide;
 }
 .js .credit-card-group input.card-number.transitioning-in {
 	-webkit-transition: width 0s linear;
@@ -163,6 +169,58 @@
   0%, 100% { -webkit-transform: translateX(0); }
   30%, 60% { -webkit-transform: translateX(-10px); }
   40%, 80% { -webkit-transform: translateX(10px); }
+}
+
+@-webkit-keyframes slide {
+	0%, 10% { text-indent: 0; width: 186px; -webkit-transform: translateX(-10%); }
+	10%, 20% { text-indent: -15px; width: 176px; -webkit-transform: translateX(-10%); }
+	20%, 30% { text-indent: -30px; width: 156px; -webkit-transform: translateX(-10%); }
+	30%, 40% { text-indent: -45px; width: 136px; -webkit-transform: translateX(-10%); }
+	40%, 50% { text-indent: -60px; width: 116px; -webkit-transform: translateX(-10%); }
+	50%, 60% { text-indent: -75px; width: 96px; -webkit-transform: translateX(-15%); }
+	60%, 70% { text-indent: -90px; width: 76px; -webkit-transform: translateX(-15%); }
+	70%, 80% { text-indent: -105px; width: 66px; -webkit-transform: translateX(-10%); }
+	80%, 90% { text-indent: -110px;width: 56px; -webkit-transform: translateX(-5%); }
+	90%, 100% { text-indent: -120px;width: 46px; -webkit-transform: translateX(0); }
+}
+
+@-moz-keyframes slide {
+	0%, 10% { text-indent: 0; width: 186px; -moz-transform: translateX(-10%); }
+	10%, 20% { text-indent: -15px; width: 176px; -moz-transform: translateX(-10%); }
+	20%, 30% { text-indent: -30px; width: 156px; -moz-transform: translateX(-10%); }
+	30%, 40% { text-indent: -45px; width: 136px; -moz-transform: translateX(-10%); }
+	40%, 50% { text-indent: -60px; width: 116px; -moz-transform: translateX(-10%); }
+	50%, 60% { text-indent: -75px; width: 96px; -moz-transform: translateX(-15%); }
+	60%, 70% { text-indent: -90px; width: 76px; -moz-transform: translateX(-15%); }
+	70%, 80% { text-indent: -105px; width: 66px; -moz-transform: translateX(-10%); }
+	80%, 90% { text-indent: -110px;width: 56px; -moz-transform: translateX(-5%); }
+	90%, 100% { text-indent: -120px;width: 46px; -moz-transform: translateX(0); }
+}
+
+@-o-keyframes slide {
+	0%, 10% { text-indent: 0; width: 186px; -o-transform: translateX(-10%); }
+	10%, 20% { text-indent: -15px; width: 176px; -o-transform: translateX(-10%); }
+	20%, 30% { text-indent: -30px; width: 156px; -o-transform: translateX(-10%); }
+	30%, 40% { text-indent: -45px; width: 136px; -o-transform: translateX(-10%); }
+	40%, 50% { text-indent: -60px; width: 116px; -o-transform: translateX(-10%); }
+	50%, 60% { text-indent: -75px; width: 96px; -o-transform: translateX(-15%); }
+	60%, 70% { text-indent: -90px; width: 76px; -o-transform: translateX(-15%); }
+	70%, 80% { text-indent: -105px; width: 66px; -o-transform: translateX(-10%); }
+	80%, 90% { text-indent: -110px;width: 56px; -o-transform: translateX(-5%); }
+	90%, 100% { text-indent: -120px;width: 46px; -o-transform: translateX(0); }
+}
+
+@keyframes slide {
+	0%, 10% { text-indent: 0; width: 186px; transform: translateX(-10%); }
+	10%, 20% { text-indent: -15px; width: 176px; transform: translateX(-10%); }
+	20%, 30% { text-indent: -30px; width: 156px; transform: translateX(-10%); }
+	30%, 40% { text-indent: -45px; width: 136px; transform: translateX(-10%); }
+	40%, 50% { text-indent: -60px; width: 116px; transform: translateX(-10%); }
+	50%, 60% { text-indent: -75px; width: 96px; transform: translateX(-15%); }
+	60%, 70% { text-indent: -90px; width: 76px; transform: translateX(-15%); }
+	70%, 80% { text-indent: -105px; width: 66px; transform: translateX(-10%); }
+	80%, 90% { text-indent: -110px;width: 56px; transform: translateX(-5%); }
+	90%, 100% { text-indent: -120px;width: 46px; transform: translateX(0); }
 }
 
 @-moz-keyframes shake {
