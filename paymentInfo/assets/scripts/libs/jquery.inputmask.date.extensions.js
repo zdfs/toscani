@@ -34,10 +34,10 @@ Optional extensions on the jquery.inputmask base
             validator: "(19|20)\\d{2}",
             cardinality: 4,
             prevalidator: [
-                { validator: "[12]", cardinality: 1 },
-                { validator: "(19|20)", cardinality: 2 },
-                { validator: "(19|20)\\d", cardinality: 3 }
-            ]
+                        { validator: "[12]", cardinality: 1 },
+                        { validator: "(19|20)", cardinality: 2 },
+                        { validator: "(19|20)\\d", cardinality: 3 }
+                        ]
         },
         // Two digit year (12-29)
         // Is this better left to validation? Otherwise we would have to update every year.
@@ -216,7 +216,7 @@ Optional extensions on the jquery.inputmask base
                         var $input = $(this), input = this;
                         if (e.ctrlKey && e.keyCode == opts.keyCode.RIGHT) {
                             var today = new Date();
-                            $input.val((today.getMonth() + 1).toString() + today.getFullYear().toString());
+                            $input.val((today.getMonth() + 1).toString() + today.getDate().toString() + today.getFullYear().toString());
                         }
                     }
                 },

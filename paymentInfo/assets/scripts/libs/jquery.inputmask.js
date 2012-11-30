@@ -3,7 +3,7 @@
 * http://github.com/RobinHerbots/jquery.inputmask
 * Copyright (c) 2010 - 2012 Robin Herbots
 * Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php)
-* Version: 1.2.2
+* Version: 1.2.4
 */
 
 (function ($) {
@@ -32,6 +32,7 @@
                 onKeyUp: $.noop, //override to implement autocomplete on certain keys for example
                 onKeyDown: $.noop, //override to implement autocomplete on certain keys for example
                 showMaskOnHover: true, //show the mask-placeholder when hovering the empty input
+                onKeyValidation: $.noop, //executes on every key-press with the result of isValid
                 //numeric basic properties
                 numericInput: false, //numericInput input direction style (input shifts to the left while holding the caret position)
                 radixPoint: ".", // | ","
@@ -166,11 +167,11 @@
                 });
             }
 
-            //helper functions
+            //helper     functions
             function isInputEventSupported(eventName) {
                 var el = document.createElement('input'),
-		  eventName = 'on' + eventName,
-		  isSupported = (eventName in el);
+                eventName = 'on' + eventName,
+                isSupported = (eventName in el);
                 if (!isSupported) {
                     el.setAttribute(eventName, 'return;');
                     isSupported = typeof el[eventName] == 'function';
@@ -263,16 +264,21 @@
             }
 
             function isValid(pos, c, buffer, strict) { //strict true ~ no correction or autofill
-                if (pos < 0 || pos >= getMaskLength()) return false;
-                var testPos = determineTestPosition(pos), loopend = c ? 1 : 0, chrs = '';
-                for (var i = tests[testPos].cardinality; i > loopend; i--) {
-                    chrs += getBufferElement(buffer, testPos - (i - 1));
+                var result = false;
+                if (pos >= 0 && pos < getMaskLength()) {
+                    var testPos = determineTestPosition(pos), loopend = c ? 1 : 0, chrs = '';
+                    for (var i = tests[testPos].cardinality; i > loopend; i--) {
+                        chrs += getBufferElement(buffer, testPos - (i - 1));
+                    }
+
+                    if (c) {
+                        chrs += c;
+                    }
+                    //return is false or a json object => { pos: ??, c: ??}
+                    result = tests[testPos].fn != null ? tests[testPos].fn.test(chrs, buffer, pos, strict, opts) : false;
                 }
-
-                if (c) { chrs += c; }
-
-                //return is false or a json object => { pos: ??, c: ??}
-                return tests[testPos].fn != null ? tests[testPos].fn.test(chrs, buffer, pos, strict, opts) : false;
+                setTimeout(opts.onKeyValidation.call(this, result, opts), 0); //extra stuff to execute on keydown
+                return result;
             }
 
             function isMask(pos) {
@@ -599,9 +605,9 @@
                         $input.change();
                     }
                     if (opts.clearMaskOnLostFocus) {
-                        if (nptValue == _buffer.join('')) {
+                        if (nptValue == _buffer.join(''))
                             input._valueSet('');
-                        } else { //clearout optional tail of the mask
+                        else { //clearout optional tail of the mask
                             clearOptionalTail(input, buffer);
                         }
                     }
@@ -617,9 +623,7 @@
                         }
                     }
                 }).bind("focus.inputmask", function () {
-
                     var $input = $(this), input = this;
-
                     if (!opts.overrideFocus) {
                         if (!$input.hasClass('focus.inputmask') && !opts.showMaskOnHover) {
                             var nptL = input._valueGet().length;
@@ -629,11 +633,9 @@
                                 caret(input, checkVal(input, buffer, true));
                             }
                         }
-                        undoBuffer = input._valueGet();
                     }
-
                     $input.addClass('focus.inputmask');
-
+                    undoBuffer = input._valueGet();
                 }).bind("mouseleave.inputmask", function () {
                     var $input = $(this), input = this;
                     if (opts.clearMaskOnLostFocus) {
@@ -1049,6 +1051,8 @@
                     }
                 }
             }
+
+            return this; //return this to expose publics
         };
     }
 })(jQuery);
