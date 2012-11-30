@@ -234,12 +234,14 @@
 					.addClass("full")
 					.unbind("keydown blur")
 					.bind("keydown", function (e) {
-						if (e.keyCode === 8 && $(this).val() === "") {
-							$(this).removeClass("full");
-							$("." + opts.cardImageClass).removeClass("cvv2");
-							if (window.navigator.standalone || !Modernizr.touch) {
-								$("." + opts.cardExpirationClass).focus();
+						if (e.keyCode === 8 || e.keyCode === 9) {
+							if ($(this).val() === "") {
+								$(this).removeClass("full");
+								if (window.navigator.standalone || !Modernizr.touch) {
+									$("." + opts.cardExpirationClass).focus();
+								}
 							}
+							$("." + opts.cardImageClass).removeClass("cvv2");
 						}
 					});
 
