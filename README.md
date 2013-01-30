@@ -1,4 +1,4 @@
 Toscani
 =======
 
-A series of web experiments.
+A series of web experiments. Not meant for production.
