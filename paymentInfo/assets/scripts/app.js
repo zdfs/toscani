@@ -426,8 +426,12 @@
 								oncomplete: helpers.zipComplete
 							})
 							.addClass("hide")
-						.end()
-						.after("<span class='" + opts.cardInstructionClass + "'>"+ opts.messageEnterCardNumber + "</span>");
+						.end();
+
+						if(opts.cardInstruction) {
+							$(this).
+								after("<span class='" + opts.cardInstructionClass + "'>"+ opts.messageEnterCardNumber + "</span>");
+						}
 
 						helpers.matchNumbers($(this).find("." + opts.cardNumberClass).eq(0));
 
@@ -462,6 +466,7 @@
 		cardExpirationClass: "card-expiration",
 		cardZipClass: "card-zip",
 		cardNumberClass: "card-number",
+		cardInstruction : true,
 		cardInstructionClass: "card-instruction",
 		animationWait: 600,
 		focusDelay: 200,

@@ -1,24 +1,20 @@
-body {
-  padding: 2em 1em; }
-
-section {
-  margin-bottom: 2em; }
-
+/* ======================================
+ * SASS VARIABLES
+ * ======================================
+ */
+/* ======================================
+ * UTILITY CLASSES
+ * ======================================
+ */
 .hide {
   left: -999999px;
   position: absolute; }
 
 /* ======================================
- * NOSCRIPT STYLES
+ * SINGLE FIELD CREDIT CARD STYLES
+ * These styles were modified from http://zdfs.github.io/toscani/paymentInfo/index.html
  * ======================================
  */
-.credit-card-group-container {
-  border: 0;
-  padding: 0; }
-  .credit-card-group-container legend {
-    display: block;
-    margin-bottom: 0.3em; }
-
 .js .credit-card-group {
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
