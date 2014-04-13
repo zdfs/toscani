@@ -8,3 +8,5 @@ paymentInfo/assets/css/demo.css
 .DS_Store
 
 /paymentInfo/assets/scripts/min/app-ck.js
+
+*.codekit
