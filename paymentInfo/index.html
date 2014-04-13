@@ -7,35 +7,27 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/demo.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/paymentInfo.css">
-	<link rel="shortcut icon" href="assets/favicon.ico">
-	<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-	<title>Payment Info</title>
+	<title>Single-Field Credit Card Submit</title>
 </head>
 <body>
-	<section>
-		<form>
-			<fieldset class="credit-card-group">
-				<input placeholder="1234 5678 9012 3456" pattern="[0-9]*" type="text" class="card-number">
-				<input placeholder="MM/YY" pattern="[0-9]*" type="text" class="card-expiration">
-				<input placeholder="CVV" pattern="[0-9]*" type="text" class="card-cvv">
-				<input placeholder="ZIP" pattern="[0-9]*" type="text" class="card-zip">
-			</fieldset>
-		</form>
-	</section>
-	<section>
-		<h3>Notes</h3>
-		<ul>
-			<li>If you are overly paranoid about typing your credit card number into this field, feel free to use one of the ones <a href="http://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/credit_card_numbers.htm">listed here</a>.</li>
-			<li>Right now, the two-digit year only allows for 12-29. Which is fine, but there's no support for automatically updating this when the year changes. We would have to update the mask manually. Might be better to leave it alone and allow server/client validation to handle this case in production.</li>
-			<li>Auto-focus only works on the Desktop and stand-alone webapps. iOS won't allow auto-focus within Safari. However, auto-focus in an iOS stand-alone webapp will feel jumpy due to iOS trying to hide the keyboard only to have it reappear. No way to just leave the keyboard up while auto-focusing.</li>
-		</ul>
-		<h3>Refinements</h3>
-		<ul>
-			<li><span style="background-color: yellow">Maybe:</span> Support Canadian postal code formats like "T2X1V4".</li>
-			<li><span style="background-color: gray">Pending:</span> If a number is not allowed via the mask, then shake the field a bit to indicate something is wrong. <span style="text-decoration: line-through;">Will need to submit a request to the inputmask project for an event hook.</span></li>
-			<li>See how graceful the degradation will go.</li>
-		</ul>
-	</section>
+	<header role="banner">
+		<h1>Single-Field Credit Card Input</h1>
+		<p>Based on the <a href="http://zdfs.github.io/toscani/paymentInfo/index.html">phenomenal work</a> by <a href="https://github.com/zdfs">@zdfs</a></p>
+	</header><!--end role=banner-->
+	<div role="main">
+		<section>
+
+			<form>
+				<fieldset class="credit-card-group">
+					<label for="">
+					<input placeholder="1234 5678 9012 3456" pattern="[0-9]*" type="text" class="card-number">
+					<input placeholder="MM/YY" pattern="[0-9]*" type="text" class="card-expiration">
+					<input placeholder="CVV" pattern="[0-9]*" type="text" class="card-cvv">
+					<input placeholder="ZIP" pattern="[0-9]*" type="text" class="card-zip">
+				</fieldset>
+			</form>
+		</section>
+	</div><!--end role=main-->
 	<script src="assets/scripts/libs/modernizr.js"></script>
 	<script src="assets/scripts/libs/jquery.js"></script>
 	<script src="assets/scripts/libs/jquery.inputmask.js"></script>

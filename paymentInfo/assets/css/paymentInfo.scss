@@ -1,0 +1,258 @@
+$gray : #bbb;
+$error : #b94a48;
+
+
+
+
+//Single Field Credit Card input
+//These styles were modified from http://zdfs.github.io/toscani/paymentInfo/index.html
+
+section {
+	margin-bottom: 2em;
+}
+
+.hide {
+	left: -999999px;
+	position: absolute;
+}
+
+/* ======================================
+ * NOSCRIPT STYLES
+ * ======================================
+ */
+
+.js .credit-card-group {
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	-webkit-perspective: 1000;
+	-moz-perspective: 1000;
+	-o-perspective: 1000;
+	perspective: 1000;
+
+	border: 1px solid $gray;
+	overflow: hidden;
+	padding: 0 1em;
+	position: relative;
+
+	input {
+		background: transparent;
+		border: 0;
+		box-shadow: none;
+		outline: 0;
+		padding: 0;
+		padding: 1em 0;
+
+		&.full {
+			text-align: center;
+		}
+	}
+
+	.card-number {
+		width: 206px;
+
+		&.transitioning-out {
+			-webkit-animation-iteration-count: 1;
+			-moz-animation-iteration-count: 1;
+			-o-animation-iteration-count: 1;
+			animation-iteration-count: 1;
+			-webkit-animation-duration: .4s;
+			-moz-animation-duration: .4s;
+			-o-animation-duration: .4s;
+			animation-duration: .4s;
+			-webkit-animation-fill-mode: both;
+			-moz-animation-fill-mode: both;
+			-o-animation-fill-mode: both;
+			animation-fill-mode: both;
+			-webkit-animation-name: slide;
+			-moz-animation-name: slide;
+			-o-animation-name: slide;
+			animation-name: slide;
+		}
+
+		&.transitioning-in {
+			-webkit-transition: width 0s linear;
+			-moz-transition: width 0s linear;
+			-ms-transition: width 0s linear;
+			-o-transition: width 0s linear;
+			transition: width 0s linear;
+			width: 206px;
+		}
+
+		&.full {
+			width: 15%;
+		}
+	}
+
+	.card-expiration{
+		width: 21.5%;
+	}
+
+	.card-zip { 
+		width: 20%;
+	}
+
+	.card-cvv {
+		width: 18%;
+	}
+
+	.card-image {
+		background: white url(../images/money.png) 50% 50% no-repeat;
+		display: inline-block;
+		height: 19px;
+		position: relative;
+		top: 50%;
+		margin-bottom: -3px;
+		width: 30px;
+		z-index: 2;
+
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		-o-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+
+		-webkit-transition: all 0.25s linear;
+		-moz-transition: all 0.25s linear;
+		-ms-transition: all 0.25s linear;
+		-o-transition: all 0.25s linear;
+		transition: all 0.25s linear;
+
+		&.visa {
+			background: url(../images/visa.png) 0 50% no-repeat; 
+		}
+
+		&.amex {
+			background: url(../images/amex.png) 0 50% no-repeat;
+		}
+
+		&.mc { 
+			background: url(../images/mastercard.png) 0 50% no-repeat;
+		}
+
+		&.disc { 
+			background: url(../images/discover.png) 0 50% no-repeat;
+		}
+
+		&.cvv2 {
+			background: url(../images/cvv.png) 0 50% no-repeat;
+			-webkit-transform: rotateY(180deg);
+			-moz-transform: rotateY(180deg);
+			-ms-transform: rotateY(180deg);
+			-o-transform: rotateY(180deg);
+			transform: rotateY(180deg);
+		}
+	}
+
+	&.invalid { 
+		border: 1px solid $error;
+
+		input {
+			color: $error;
+		}
+	}
+
+	.parsley-errors-list {
+		display: none !important;
+	}
+}
+
+.shake {
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-iteration-count: 1;
+	-o-animation-iteration-count: 1;
+	animation-iteration-count: 1;
+	-webkit-animation-duration: .4s;
+	-moz-animation-duration: .4s;
+	-o-animation-duration: .4s;
+	animation-duration: .4s;
+	-webkit-animation-fill-mode: both;
+	-moz-animation-fill-mode: both;
+	-o-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-name: shake;
+	-moz-animation-name: shake;
+	-o-animation-name: shake;
+	animation-name: shake;
+}
+
+/* ======================================
+ * ANIMATIONS
+ * ======================================
+ */
+@-webkit-keyframes shake {
+  0%, 100% { -webkit-transform: translateX(0); }
+  30%, 60% { -webkit-transform: translateX(-10px); }
+  40%, 80% { -webkit-transform: translateX(10px); }
+}
+
+@-webkit-keyframes slide {
+	0%, 10% { text-indent: 0; width: 186px; -webkit-transform: translateX(-10%); }
+	10%, 20% { text-indent: -15px; width: 176px; -webkit-transform: translateX(-10%); }
+	20%, 30% { text-indent: -30px; width: 156px; -webkit-transform: translateX(-10%); }
+	30%, 40% { text-indent: -45px; width: 136px; -webkit-transform: translateX(-10%); }
+	40%, 50% { text-indent: -60px; width: 116px; -webkit-transform: translateX(-10%); }
+	50%, 60% { text-indent: -75px; width: 96px; -webkit-transform: translateX(-15%); }
+	60%, 70% { text-indent: -90px; width: 76px; -webkit-transform: translateX(-15%); }
+	70%, 80% { text-indent: -105px; width: 66px; -webkit-transform: translateX(-10%); }
+	80%, 90% { text-indent: -110px;width: 56px; -webkit-transform: translateX(-5%); }
+	90%, 100% { text-indent: -120px;width: 46px; -webkit-transform: translateX(0); }
+}
+
+@-moz-keyframes slide {
+	0%, 10% { text-indent: 0; width: 186px; -moz-transform: translateX(-10%); }
+	10%, 20% { text-indent: -15px; width: 176px; -moz-transform: translateX(-10%); }
+	20%, 30% { text-indent: -30px; width: 156px; -moz-transform: translateX(-10%); }
+	30%, 40% { text-indent: -45px; width: 136px; -moz-transform: translateX(-10%); }
+	40%, 50% { text-indent: -60px; width: 116px; -moz-transform: translateX(-10%); }
+	50%, 60% { text-indent: -75px; width: 96px; -moz-transform: translateX(-15%); }
+	60%, 70% { text-indent: -90px; width: 76px; -moz-transform: translateX(-15%); }
+	70%, 80% { text-indent: -105px; width: 66px; -moz-transform: translateX(-10%); }
+	80%, 90% { text-indent: -110px;width: 56px; -moz-transform: translateX(-5%); }
+	90%, 100% { text-indent: -120px;width: 46px; -moz-transform: translateX(0); }
+}
+
+@-o-keyframes slide {
+	0%, 10% { text-indent: 0; width: 186px; -o-transform: translateX(-10%); }
+	10%, 20% { text-indent: -15px; width: 176px; -o-transform: translateX(-10%); }
+	20%, 30% { text-indent: -30px; width: 156px; -o-transform: translateX(-10%); }
+	30%, 40% { text-indent: -45px; width: 136px; -o-transform: translateX(-10%); }
+	40%, 50% { text-indent: -60px; width: 116px; -o-transform: translateX(-10%); }
+	50%, 60% { text-indent: -75px; width: 96px; -o-transform: translateX(-15%); }
+	60%, 70% { text-indent: -90px; width: 76px; -o-transform: translateX(-15%); }
+	70%, 80% { text-indent: -105px; width: 66px; -o-transform: translateX(-10%); }
+	80%, 90% { text-indent: -110px;width: 56px; -o-transform: translateX(-5%); }
+	90%, 100% { text-indent: -120px;width: 46px; -o-transform: translateX(0); }
+}
+
+@keyframes slide {
+	0%, 10% { text-indent: 0; width: 186px; transform: translateX(-10%); }
+	10%, 20% { text-indent: -15px; width: 176px; transform: translateX(-10%); }
+	20%, 30% { text-indent: -30px; width: 156px; transform: translateX(-10%); }
+	30%, 40% { text-indent: -45px; width: 136px; transform: translateX(-10%); }
+	40%, 50% { text-indent: -60px; width: 116px; transform: translateX(-10%); }
+	50%, 60% { text-indent: -75px; width: 96px; transform: translateX(-15%); }
+	60%, 70% { text-indent: -90px; width: 76px; transform: translateX(-15%); }
+	70%, 80% { text-indent: -105px; width: 66px; transform: translateX(-10%); }
+	80%, 90% { text-indent: -110px;width: 56px; transform: translateX(-5%); }
+	90%, 100% { text-indent: -120px;width: 46px; transform: translateX(0); }
+}
+
+@-moz-keyframes shake {
+  0%, 100% { -moz-transform: translateX(0); }
+  30%, 60% { -moz-transform: translateX(-10px); }
+  40%, 80% { -moz-transform: translateX(10px); }
+}
+
+@-o-keyframes shake {
+  0%, 100% { -o-transform: translateX(0); }
+  30%, 60% { -o-transform: translateX(-10px); }
+  40%, 80% { -o-transform: translateX(10px); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  30%, 60% { transform: translateX(-10px); }
+  40%, 80% { transform: translateX(10px); }
+}
