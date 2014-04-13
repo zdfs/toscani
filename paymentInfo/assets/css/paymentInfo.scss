@@ -6,6 +6,9 @@ $error : #b94a48;
 
 //Single Field Credit Card input
 //These styles were modified from http://zdfs.github.io/toscani/paymentInfo/index.html
+body {
+	padding: 2em 1em;
+}
 
 section {
 	margin-bottom: 2em;
@@ -34,7 +37,7 @@ section {
 
 	border: 1px solid $gray;
 	overflow: hidden;
-	padding: 0 1em;
+	padding: 0 0.5em;
 	position: relative;
 
 	input {
@@ -45,9 +48,6 @@ section {
 		padding: 0;
 		padding: 1em 0;
 
-		&.full {
-			text-align: center;
-		}
 	}
 
 	.card-number {
@@ -99,13 +99,14 @@ section {
 	}
 
 	.card-image {
-		background: white url(../images/money.png) 50% 50% no-repeat;
+		background: url(../images/creditcards.svg) 0 0 no-repeat;
+		background-size: 100% auto;
 		display: inline-block;
-		height: 19px;
+		height: 22px;
 		position: relative;
 		top: 50%;
-		margin-bottom: -3px;
-		width: 30px;
+		margin: 0 3px -6px 0;
+		width: 32px;
 		z-index: 2;
 
 		-webkit-transform-style: preserve-3d;
@@ -113,30 +114,24 @@ section {
 		-o-transform-style: preserve-3d;
 		transform-style: preserve-3d;
 
-		-webkit-transition: all 0.25s linear;
-		-moz-transition: all 0.25s linear;
-		-ms-transition: all 0.25s linear;
-		-o-transition: all 0.25s linear;
-		transition: all 0.25s linear;
-
 		&.visa {
-			background: url(../images/visa.png) 0 50% no-repeat; 
-		}
-
-		&.amex {
-			background: url(../images/amex.png) 0 50% no-repeat;
+			background-position: 0 -21px;
 		}
 
 		&.mc { 
-			background: url(../images/mastercard.png) 0 50% no-repeat;
+			background-position: 0 -44px;
+		}
+
+		&.amex {
+			background-position: 0 -66px;
 		}
 
 		&.disc { 
-			background: url(../images/discover.png) 0 50% no-repeat;
+			background-position: 0 -88px;
 		}
 
 		&.cvv2 {
-			background: url(../images/cvv.png) 0 50% no-repeat;
+			background-position: 0 -156px;
 			-webkit-transform: rotateY(180deg);
 			-moz-transform: rotateY(180deg);
 			-ms-transform: rotateY(180deg);
@@ -151,10 +146,6 @@ section {
 		input {
 			color: $error;
 		}
-	}
-
-	.parsley-errors-list {
-		display: none !important;
 	}
 }
 

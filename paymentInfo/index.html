@@ -7,27 +7,21 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/demo.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/paymentInfo.css">
-	<title>Single-Field Credit Card Submit</title>
+	<link rel="shortcut icon" href="assets/favicon.ico">
+	<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+	<title>Payment Info</title>
 </head>
 <body>
-	<header role="banner">
-		<h1>Single-Field Credit Card Input</h1>
-		<p>Based on the <a href="http://zdfs.github.io/toscani/paymentInfo/index.html">phenomenal work</a> by <a href="https://github.com/zdfs">@zdfs</a></p>
-	</header><!--end role=banner-->
-	<div role="main">
-		<section>
-
-			<form>
-				<fieldset class="credit-card-group">
-					<label for="">
-					<input placeholder="1234 5678 9012 3456" pattern="[0-9]*" type="text" class="card-number">
-					<input placeholder="MM/YY" pattern="[0-9]*" type="text" class="card-expiration">
-					<input placeholder="CVV" pattern="[0-9]*" type="text" class="card-cvv">
-					<input placeholder="ZIP" pattern="[0-9]*" type="text" class="card-zip">
-				</fieldset>
-			</form>
-		</section>
-	</div><!--end role=main-->
+	<section>
+		<form>
+			<fieldset class="credit-card-group">
+				<input placeholder="1234 5678 9012 3456" pattern="[0-9]*" type="text" class="card-number">
+				<input placeholder="MM/YY" pattern="[0-9]*" type="text" class="card-expiration">
+				<input placeholder="CVV" pattern="[0-9]*" type="text" class="card-cvv">
+				<input placeholder="ZIP" pattern="[0-9]*" type="text" class="card-zip">
+			</fieldset>
+		</form>
+	</section>
 	<script src="assets/scripts/libs/modernizr.js"></script>
 	<script src="assets/scripts/libs/jquery.js"></script>
 	<script src="assets/scripts/libs/jquery.inputmask.js"></script>
