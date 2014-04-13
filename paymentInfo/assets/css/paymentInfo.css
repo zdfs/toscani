@@ -87,7 +87,12 @@ section {
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     -o-transform-style: preserve-3d;
-    transform-style: preserve-3d; }
+    transform-style: preserve-3d;
+    -webkit-transition: all 0.25s linear;
+    -moz-transition: all 0.25s linear;
+    -ms-transition: all 0.25s linear;
+    -o-transition: all 0.25s linear;
+    transition: all 0.25s linear; }
     .js .credit-card-group .card-image.visa {
       background-position: 0 -21px; }
     .js .credit-card-group .card-image.mc {
@@ -104,15 +109,19 @@ section {
       -o-transform: rotateY(180deg);
       transform: rotateY(180deg); }
   .js .credit-card-group.invalid {
-    border: 1px solid #b94a48; }
+    border-color: #b94a48; }
     .js .credit-card-group.invalid input {
       color: #b94a48; }
+  .js .credit-card-group.valid {
+    border-color: #089e00; }
 
 .card-instruction {
   font-size: 80%;
   color: gray; }
   .card-instruction.invalid {
     color: #b94a48; }
+  .card-instruction.valid {
+    color: #089e00; }
 
 .shake {
   -webkit-animation-iteration-count: 1;

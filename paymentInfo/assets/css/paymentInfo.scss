@@ -1,5 +1,6 @@
 $gray : #808080;
 $error : #b94a48;
+$valid : #089e00;
 
 
 
@@ -125,6 +126,12 @@ section {
 		-o-transform-style: preserve-3d;
 		transform-style: preserve-3d;
 
+		-webkit-transition: all 0.25s linear;
+		-moz-transition: all 0.25s linear;
+		-ms-transition: all 0.25s linear;
+		-o-transition: all 0.25s linear;
+		transition: all 0.25s linear;
+
 		&.visa {
 			background-position: 0 -21px;
 		}
@@ -152,11 +159,15 @@ section {
 	}
 
 	&.invalid { 
-		border: 1px solid $error;
+		border-color: $error;
 
 		input {
 			color: $error;
 		}
+	}
+
+	&.valid { 
+		border-color: $valid;
 	}
 }
 
@@ -166,6 +177,10 @@ section {
 
 	&.invalid {
 		color: $error;
+	}
+
+	&.valid {
+		color: $valid;
 	}
 }
 

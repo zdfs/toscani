@@ -318,6 +318,15 @@
 					})
 					.inputmask({ mask: "99999" });
 
+				$("." + opts.fieldsetClass)
+					.addClass('valid');
+
+				$("." + opts.cardInstructionClass)
+					.addClass('valid');
+
+				// Update instruction message with success message
+				helpers.updateInstruction(opts.messageSuccess);
+
 			},
 
 			// This function allows us to edit the credit card number once it's been entered.
@@ -418,6 +427,9 @@
 							})
 							.addClass("hide")
 						.end()
+						.find("label")
+							.addClass("hide")
+						.end()
 						.after("<span class='card-instruction'>"+ opts.messageEnterCardNumber + "</span>");
 
 						helpers.matchNumbers($(this).find("." + opts.cardNumberClass).eq(0));
@@ -462,7 +474,8 @@
 		messageExpirationError : "Please enter a valid month and year",
 		messageCVV : "Please enter the three-digit CVV number found on the back of your card",
 		messageCVVAmEx : "Please enter your four-digit CVV number on the front of your card",
-		messageZip : "Please enter your billing zip code"
+		messageZip : "Please enter your billing zip code",
+		messageSuccess : "Hooray! You've successfully filled out your credit card information."
 	};
 
 }(jQuery));
