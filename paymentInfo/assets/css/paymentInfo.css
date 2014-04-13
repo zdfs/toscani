@@ -12,6 +12,13 @@ section {
  * NOSCRIPT STYLES
  * ======================================
  */
+.credit-card-group-container {
+  border: 0;
+  padding: 0; }
+  .credit-card-group-container legend {
+    display: block;
+    margin-bottom: 0.3em; }
+
 .js .credit-card-group {
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
@@ -21,9 +28,10 @@ section {
   -moz-perspective: 1000;
   -o-perspective: 1000;
   perspective: 1000;
-  border: 1px solid #bbbbbb;
+  border: 1px solid gray;
   overflow: hidden;
   padding: 0 0.5em;
+  margin-bottom: 0.2em;
   position: relative; }
   .js .credit-card-group input {
     background: transparent;
@@ -99,6 +107,12 @@ section {
     border: 1px solid #b94a48; }
     .js .credit-card-group.invalid input {
       color: #b94a48; }
+
+.card-instruction {
+  font-size: 80%;
+  color: gray; }
+  .card-instruction.invalid {
+    color: #b94a48; }
 
 .shake {
   -webkit-animation-iteration-count: 1;

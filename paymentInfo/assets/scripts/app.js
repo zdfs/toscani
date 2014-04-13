@@ -1,5 +1,5 @@
 // Payment Info Component
-// Author: Zachary Forrest
+// Author: Zachary Forrest, modified by Brad Frost
 // Requires: jQuery, Modernizer, jQuery.inputmask
 
 (function ($) {
@@ -84,7 +84,7 @@
 					el
 						.prev()
 						.removeClass()
-						.addClass(opts.cardImageClass)
+						.addClass(opts.cardImageClass) // BF This is incorrectly applying the .card-image class to the legend, rather than the span
 						.data("ccNumber", "");
 				}
 
@@ -114,6 +114,8 @@
 					$(el)
 						.parents("." + opts.fieldsetClass)
 						.removeClass("invalid shake");
+
+					$('.' + opts.cardInstructionClass).removeClass("invalid");
 				}
 
 			},
@@ -130,6 +132,13 @@
 					$(element)
 						.parents("." + opts.fieldsetClass)
 						.addClass("invalid shake");
+					
+					// Update instruction class to reflect the error
+					$('.' + opts.cardInstructionClass).addClass("invalid");
+
+					// Update instruction message
+					helpers.updateInstruction(opts.messageCardNumberError);
+
 					return;
 				}
 
@@ -199,12 +208,18 @@
 					.bind("focus click keydown", function (e) {
 						if (e.type === "focus" || e.type === "click" || (e.shiftKey && e.keyCode === 9)) {
 							helpers.beginCreditCard($(element));
+
+							// Update instruction message
+							helpers.updateInstruction(opts.messageEnterCardNumber);
 						}
 					});
 
 				if (window.navigator.standalone || !Modernizr.touch) {
 					// Focus on the credit card expiration input.
 					$("." + opts.cardExpirationClass).focus().val($.trim($("." + opts.cardExpirationClass).val()));
+
+					// Update instruction message
+					helpers.updateInstruction(opts.messageExpiration);
 				}
 
 			},
@@ -225,6 +240,9 @@
 							$(this).removeClass("full");
 							if (window.navigator.standalone || !Modernizr.touch) {
 								$("." + opts.cardNumberClass).focus();
+
+								// Update instruction message
+								helpers.updateInstruction(opts.messageEnterCardNumber);
 							}
 						}
 					});
@@ -232,8 +250,14 @@
 				if (window.navigator.standalone || !Modernizr.touch) {
 					setTimeout(function () {
 						$("." + opts.cardCvvClass).focus();
+
+						// Update instruction message
+						helpers.updateInstruction(opts.messageCVV);
 					}, 220);
 				}
+
+				// Update instruction message
+				helpers.updateInstruction(opts.messageCVV);
 
 			},
 
@@ -254,6 +278,9 @@
 								$(this).removeClass("full");
 								if (window.navigator.standalone || !Modernizr.touch) {
 									$("." + opts.cardExpirationClass).focus();
+
+									// Update instruction message
+									helpers.updateInstruction(opts.messageExpiration);
 								}
 							}
 							$("." + opts.cardImageClass).removeClass("cvv2");
@@ -263,7 +290,12 @@
 				if (window.navigator.standalone || !Modernizr.touch) {
 					// Focus on the credit card expiration input.
 					$("." + opts.cardZipClass).focus();
+
+					// Update instruction message
+					helpers.updateInstruction(opts.messageZip);
 				}
+
+				
 
 
 			},
@@ -278,10 +310,13 @@
 							$(this).removeClass("full");
 							if (window.navigator.standalone || !Modernizr.touch) {
 								$("." + opts.cardCvvClass).focus();
+
+								// Update instruction message
+								helpers.updateInstruction(opts.messageCVV);
 							}
 						}
 					})
-					.inputmask({ mask: "99999" })
+					.inputmask({ mask: "99999" });
 
 			},
 
@@ -328,6 +363,10 @@
 					.find("input:gt(0)")
 					.addClass("hide");
 
+			},
+
+			updateInstruction: function (message) {
+				$('.card-instruction').html(message);
 			}
 
 		};
@@ -378,7 +417,8 @@
 								oncomplete: helpers.zipComplete
 							})
 							.addClass("hide")
-						.end();
+						.end()
+						.after("<span class='card-instruction'>"+ opts.messageEnterCardNumber + "</span>");
 
 						helpers.matchNumbers($(this).find("." + opts.cardNumberClass).eq(0));
 
@@ -413,8 +453,16 @@
 		cardExpirationClass: "card-expiration",
 		cardZipClass: "card-zip",
 		cardNumberClass: "card-number",
+		cardInstructionClass: "card-instruction",
 		animationWait: 600,
-		focusDelay: 200
+		focusDelay: 200,
+		messageEnterCardNumber : "Please enter your credit card number",
+		messageCardNumberError : "Please enter a valid credit card number",
+		messageExpiration : "Please enter your card's expiration month and year",
+		messageExpirationError : "Please enter a valid month and year",
+		messageCVV : "Please enter the three-digit CVV number found on the back of your card",
+		messageCVVAmEx : "Please enter your four-digit CVV number on the front of your card",
+		messageZip : "Please enter your billing zip code"
 	};
 
 }(jQuery));

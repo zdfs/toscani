@@ -1,4 +1,4 @@
-$gray : #bbb;
+$gray : #808080;
 $error : #b94a48;
 
 
@@ -24,6 +24,16 @@ section {
  * ======================================
  */
 
+ .credit-card-group-container {
+ 	border: 0;
+ 	padding: 0;
+
+ 	legend {
+ 		display: block;
+ 		margin-bottom: 0.3em;
+ 	}
+ }
+
 .js .credit-card-group {
 	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility: hidden;
@@ -38,6 +48,7 @@ section {
 	border: 1px solid $gray;
 	overflow: hidden;
 	padding: 0 0.5em;
+	margin-bottom: 0.2em;
 	position: relative;
 
 	input {
@@ -146,6 +157,15 @@ section {
 		input {
 			color: $error;
 		}
+	}
+}
+
+.card-instruction {
+	font-size: 80%;
+	color: $gray;
+
+	&.invalid {
+		color: $error;
 	}
 }
 
