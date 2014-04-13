@@ -6,3 +6,5 @@ paymentInfo/assets/css/demo.css
 /.DS_Store
 
 .DS_Store
+
+/paymentInfo/assets/scripts/min/app-ck.js

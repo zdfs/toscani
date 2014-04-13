@@ -64,27 +64,24 @@
 					ccType = helpers.getCreditCardType(cardNumber);
 
 				// If the credit card field has a value and we know what type of card it is,
-				// then add the appropriate class to the card image <div>. This will allow us
+				// then add the appropriate class to the card image <span>. This will allow us
 				// to see the correct card. If we don't know the type, then revert back to the
 				// default image. If the credit card field doesn't have a value, then we revert
 				// back to the default image and erase any credit card number we might have stored.
 
 				if (el.val() !== "") {
 					if (ccType !== "") {
-						el
-							.prev()
+						$("." + opts.cardImageClass)
 							.addClass(ccType);
 					} else {
-						el
-							.prev()
+						$("." + opts.cardImageClass)
 							.removeClass()
 							.addClass(opts.cardImageClass);
 					}
 				} else {
-					el
-						.prev()
+					$("." + opts.cardImageClass)
 						.removeClass()
-						.addClass(opts.cardImageClass) // BF This is incorrectly applying the .card-image class to the legend, rather than the span
+						.addClass(opts.cardImageClass)
 						.data("ccNumber", "");
 				}
 
@@ -398,9 +395,12 @@
 				return this.each(function () {
 
 					$(this)
-						.prepend("<span class='" + opts.cardImageClass + "'></span>")
+						.find("label")
+							.addClass("hide")
+						.end()
 						.find("." + opts.cardNumberClass)
 							.inputmask({ mask: "9999 9999 9999 9999" })
+							.before("<span class='" + opts.cardImageClass + "'></span>")
 						.end()
 						.find("." + opts.cardExpirationClass)
 							.inputmask({
@@ -427,10 +427,7 @@
 							})
 							.addClass("hide")
 						.end()
-						.find("label")
-							.addClass("hide")
-						.end()
-						.after("<span class='card-instruction'>"+ opts.messageEnterCardNumber + "</span>");
+						.after("<span class='" + opts.cardInstructionClass + "'>"+ opts.messageEnterCardNumber + "</span>");
 
 						helpers.matchNumbers($(this).find("." + opts.cardNumberClass).eq(0));
 
