@@ -1,5 +1,5 @@
 // Payment Info Component
-// Author: Zachary Forrest
+// Author: Zachary Forrest, modified by Brad Frost
 // Requires: jQuery, Modernizer, jQuery.inputmask
 
 (function ($) {
@@ -64,25 +64,22 @@
 					ccType = helpers.getCreditCardType(cardNumber);
 
 				// If the credit card field has a value and we know what type of card it is,
-				// then add the appropriate class to the card image <div>. This will allow us
+				// then add the appropriate class to the card image <span>. This will allow us
 				// to see the correct card. If we don't know the type, then revert back to the
 				// default image. If the credit card field doesn't have a value, then we revert
 				// back to the default image and erase any credit card number we might have stored.
 
 				if (el.val() !== "") {
 					if (ccType !== "") {
-						el
-							.prev()
+						$("." + opts.cardImageClass)
 							.addClass(ccType);
 					} else {
-						el
-							.prev()
+						$("." + opts.cardImageClass)
 							.removeClass()
 							.addClass(opts.cardImageClass);
 					}
 				} else {
-					el
-						.prev()
+					$("." + opts.cardImageClass)
 						.removeClass()
 						.addClass(opts.cardImageClass)
 						.data("ccNumber", "");
@@ -114,6 +111,8 @@
 					$(el)
 						.parents("." + opts.fieldsetClass)
 						.removeClass("invalid shake");
+
+					$('.' + opts.cardInstructionClass).removeClass("invalid");
 				}
 
 			},
@@ -130,6 +129,13 @@
 					$(element)
 						.parents("." + opts.fieldsetClass)
 						.addClass("invalid shake");
+					
+					// Update instruction class to reflect the error
+					$('.' + opts.cardInstructionClass).addClass("invalid");
+
+					// Update instruction message
+					helpers.updateInstruction(opts.messageCardNumberError);
+
 					return;
 				}
 
@@ -199,12 +205,18 @@
 					.bind("focus click keydown", function (e) {
 						if (e.type === "focus" || e.type === "click" || (e.shiftKey && e.keyCode === 9)) {
 							helpers.beginCreditCard($(element));
+
+							// Update instruction message
+							helpers.updateInstruction(opts.messageEnterCardNumber);
 						}
 					});
 
 				if (window.navigator.standalone || !Modernizr.touch) {
 					// Focus on the credit card expiration input.
 					$("." + opts.cardExpirationClass).focus().val($.trim($("." + opts.cardExpirationClass).val()));
+
+					// Update instruction message
+					helpers.updateInstruction(opts.messageExpiration);
 				}
 
 			},
@@ -225,6 +237,9 @@
 							$(this).removeClass("full");
 							if (window.navigator.standalone || !Modernizr.touch) {
 								$("." + opts.cardNumberClass).focus();
+
+								// Update instruction message
+								helpers.updateInstruction(opts.messageEnterCardNumber);
 							}
 						}
 					});
@@ -232,8 +247,14 @@
 				if (window.navigator.standalone || !Modernizr.touch) {
 					setTimeout(function () {
 						$("." + opts.cardCvvClass).focus();
+
+						// Update instruction message
+						helpers.updateInstruction(opts.messageCVV);
 					}, 220);
 				}
+
+				// Update instruction message
+				helpers.updateInstruction(opts.messageCVV);
 
 			},
 
@@ -254,6 +275,9 @@
 								$(this).removeClass("full");
 								if (window.navigator.standalone || !Modernizr.touch) {
 									$("." + opts.cardExpirationClass).focus();
+
+									// Update instruction message
+									helpers.updateInstruction(opts.messageExpiration);
 								}
 							}
 							$("." + opts.cardImageClass).removeClass("cvv2");
@@ -263,7 +287,12 @@
 				if (window.navigator.standalone || !Modernizr.touch) {
 					// Focus on the credit card expiration input.
 					$("." + opts.cardZipClass).focus();
+
+					// Update instruction message
+					helpers.updateInstruction(opts.messageZip);
 				}
+
+				
 
 
 			},
@@ -278,10 +307,22 @@
 							$(this).removeClass("full");
 							if (window.navigator.standalone || !Modernizr.touch) {
 								$("." + opts.cardCvvClass).focus();
+
+								// Update instruction message
+								helpers.updateInstruction(opts.messageCVV);
 							}
 						}
 					})
-					.inputmask({ mask: "99999" })
+					.inputmask({ mask: "99999" });
+
+				$("." + opts.fieldsetClass)
+					.addClass('valid');
+
+				$("." + opts.cardInstructionClass)
+					.addClass('valid');
+
+				// Update instruction message with success message
+				helpers.updateInstruction(opts.messageSuccess);
 
 			},
 
@@ -328,6 +369,10 @@
 					.find("input:gt(0)")
 					.addClass("hide");
 
+			},
+
+			updateInstruction: function (message) {
+				$('.card-instruction').html(message);
 			}
 
 		};
@@ -350,9 +395,12 @@
 				return this.each(function () {
 
 					$(this)
-						.prepend("<span class='" + opts.cardImageClass + "'></span>")
+						.find("label")
+							.addClass("hide")
+						.end()
 						.find("." + opts.cardNumberClass)
 							.inputmask({ mask: "9999 9999 9999 9999" })
+							.before("<span class='" + opts.cardImageClass + "'></span>")
 						.end()
 						.find("." + opts.cardExpirationClass)
 							.inputmask({
@@ -379,6 +427,11 @@
 							})
 							.addClass("hide")
 						.end();
+
+						if(opts.cardInstruction) {
+							$(this).
+								after("<span class='" + opts.cardInstructionClass + "'>"+ opts.messageEnterCardNumber + "</span>");
+						}
 
 						helpers.matchNumbers($(this).find("." + opts.cardNumberClass).eq(0));
 
@@ -413,8 +466,18 @@
 		cardExpirationClass: "card-expiration",
 		cardZipClass: "card-zip",
 		cardNumberClass: "card-number",
+		cardInstruction : true,
+		cardInstructionClass: "card-instruction",
 		animationWait: 600,
-		focusDelay: 200
+		focusDelay: 200,
+		messageEnterCardNumber : "Please enter your credit card number",
+		messageCardNumberError : "Please enter a valid credit card number",
+		messageExpiration : "Please enter your card's expiration month and year",
+		messageExpirationError : "Please enter a valid month and year",
+		messageCVV : "Please enter the three-digit CVV number found on the back of your card",
+		messageCVVAmEx : "Please enter your four-digit CVV number on the front of your card",
+		messageZip : "Please enter your billing zip code",
+		messageSuccess : "Hooray! You've successfully filled out your credit card information."
 	};
 
 }(jQuery));

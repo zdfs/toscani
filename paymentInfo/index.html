@@ -15,26 +15,17 @@
 	<section>
 		<form>
 			<fieldset class="credit-card-group">
-				<input placeholder="1234 5678 9012 3456" pattern="[0-9]*" type="text" class="card-number">
-				<input placeholder="MM/YY" pattern="[0-9]*" type="text" class="card-expiration">
-				<input placeholder="CVV" pattern="[0-9]*" type="text" class="card-cvv">
-				<input placeholder="ZIP" pattern="[0-9]*" type="text" class="card-zip">
+				<legend>Credit Card Information</legend>
+				<label for="card-number">Credit Card Number</label>
+				<input placeholder="1234 5678 9012 3456" pattern="[0-9]*" type="text" class="card-number" id="card-number">
+				<label for="card-number">Expiration Date</label>
+				<input placeholder="MM/YY" pattern="[0-9]*" type="text" class="card-expiration" id="card-expiration">
+				<label for="card-number">CVV Number</label>
+				<input placeholder="CVV" pattern="[0-9]*" type="text" class="card-cvv" id="card-cvv">
+				<label for="card-number">Billing Zip Code</label>
+				<input placeholder="ZIP" pattern="[0-9]*" type="text" class="card-zip" id="card-zip">
 			</fieldset>
 		</form>
-	</section>
-	<section>
-		<h3>Notes</h3>
-		<ul>
-			<li>If you are overly paranoid about typing your credit card number into this field, feel free to use one of the ones <a href="http://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/credit_card_numbers.htm">listed here</a>.</li>
-			<li>Right now, the two-digit year only allows for 12-29. Which is fine, but there's no support for automatically updating this when the year changes. We would have to update the mask manually. Might be better to leave it alone and allow server/client validation to handle this case in production.</li>
-			<li>Auto-focus only works on the Desktop and stand-alone webapps. iOS won't allow auto-focus within Safari. However, auto-focus in an iOS stand-alone webapp will feel jumpy due to iOS trying to hide the keyboard only to have it reappear. No way to just leave the keyboard up while auto-focusing.</li>
-		</ul>
-		<h3>Refinements</h3>
-		<ul>
-			<li><span style="background-color: yellow">Maybe:</span> Support Canadian postal code formats like "T2X1V4".</li>
-			<li><span style="background-color: gray">Pending:</span> If a number is not allowed via the mask, then shake the field a bit to indicate something is wrong. <span style="text-decoration: line-through;">Will need to submit a request to the inputmask project for an event hook.</span></li>
-			<li>See how graceful the degradation will go.</li>
-		</ul>
 	</section>
 	<script src="assets/scripts/libs/modernizr.js"></script>
 	<script src="assets/scripts/libs/jquery.js"></script>

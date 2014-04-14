@@ -1,0 +1,300 @@
+/* ======================================
+ * SASS VARIABLES
+ * ======================================
+ */
+
+$gray : #bbb;
+$gray-dark: #808080;
+$error : #b94a48;
+$valid : #089e00;
+
+/* ======================================
+ * UTILITY CLASSES
+ * ======================================
+ */
+
+.hide {
+	left: -999999px;
+	position: absolute;
+}
+
+/* ======================================
+ * SINGLE FIELD CREDIT CARD STYLES
+ * These styles were modified from http://zdfs.github.io/toscani/paymentInfo/index.html
+ * ======================================
+ */
+
+.js .credit-card-group {
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	-webkit-perspective: 1000;
+	-moz-perspective: 1000;
+	-o-perspective: 1000;
+	perspective: 1000;
+
+	border: 1px solid $gray;
+	overflow: hidden;
+	padding: 0 0.5em;
+	margin-bottom: 0.2em;
+	position: relative;
+
+	input {
+		background: transparent;
+		border: 0;
+		box-shadow: none;
+		outline: 0;
+		padding: 0;
+		padding: 1em 0;
+
+	}
+
+	.card-number {
+		width: 206px;
+
+		&.transitioning-out {
+			-webkit-animation-iteration-count: 1;
+			-moz-animation-iteration-count: 1;
+			-o-animation-iteration-count: 1;
+			animation-iteration-count: 1;
+			-webkit-animation-duration: .4s;
+			-moz-animation-duration: .4s;
+			-o-animation-duration: .4s;
+			animation-duration: .4s;
+			-webkit-animation-fill-mode: both;
+			-moz-animation-fill-mode: both;
+			-o-animation-fill-mode: both;
+			animation-fill-mode: both;
+			-webkit-animation-name: slide;
+			-moz-animation-name: slide;
+			-o-animation-name: slide;
+			animation-name: slide;
+		}
+
+		&.transitioning-in {
+			-webkit-transition: width 0s linear;
+			-moz-transition: width 0s linear;
+			-ms-transition: width 0s linear;
+			-o-transition: width 0s linear;
+			transition: width 0s linear;
+			width: 206px;
+		}
+
+		&.full {
+			width: 15%;
+		}
+	}
+
+	.card-expiration{
+		width: 21.5%;
+	}
+
+	.card-zip { 
+		width: 20%;
+	}
+
+	.card-cvv {
+		width: 18%;
+	}
+
+	&.invalid { 
+		border-color: $error;
+
+		input {
+			color: $error;
+		}
+	}
+
+	&.valid { 
+		border-color: $valid;
+	}
+}
+
+//Credit Card Image
+.card-image {
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2017.1.0%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3C%21DOCTYPE%20svg%20PUBLIC%20%22-//W3C//DTD%20SVG%201.1//EN%22%20%22http%3A//www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd%22%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20viewBox%3D%221%200%2060%2040%22%20enable-background%3D%22new%201%200%2060%2040%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cg%3E%0D%0A%09%3Cg%3E%0D%0A%09%09%3Cpath%20fill%3D%22%23C4DAB0%22%20d%3D%22M61%2C35c0%2C2.8-2.2%2C5-5%2C5H6c-2.8%2C0-5-2.2-5-5V5c0-2.8%2C2.2-5%2C5-5h50c2.8%2C0%2C5%2C2.2%2C5%2C5V35z%22/%3E%0D%0A%09%3C/g%3E%0D%0A%09%3Crect%20x%3D%222%22%20y%3D%226.3%22%20fill%3D%22%23424143%22%20width%3D%2259%22%20height%3D%228%22/%3E%0D%0A%09%3Cg%3E%0D%0A%09%09%3Cg%3E%0D%0A%09%09%09%3Cpath%20fill%3D%22%237D9769%22%20d%3D%22M56%2C1c2.2%2C0%2C4%2C1.8%2C4%2C4v30c0%2C2.2-1.8%2C4-4%2C4H6c-2.2%2C0-4-1.8-4-4V5c0-2.2%2C1.8-4%2C4-4H56%20M56%2C0H6%0D%0A%09%09%09%09C3.2%2C0%2C1%2C2.2%2C1%2C5v30c0%2C2.8%2C2.2%2C5%2C5%2C5h50c2.8%2C0%2C5-2.2%2C5-5V5C61%2C2.2%2C58.7%2C0%2C56%2C0L56%2C0z%22/%3E%0D%0A%09%09%3C/g%3E%0D%0A%09%3C/g%3E%0D%0A%3C/g%3E%0D%0A%3C/svg%3E%0D%0A');
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: 22px;
+	position: relative;
+	top: 50%;
+	margin: 0 3px -6px 0;
+	width: 32px;
+	z-index: 2;
+
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+	-webkit-transition: all 0.25s linear;
+	-moz-transition: all 0.25s linear;
+	-ms-transition: all 0.25s linear;
+	-o-transition: all 0.25s linear;
+	transition: all 0.25s linear;
+
+	&.visa {
+		background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2017.1.0%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3C%21DOCTYPE%20svg%20PUBLIC%20%22-//W3C//DTD%20SVG%201.1//EN%22%20%22http%3A//www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd%22%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20viewBox%3D%220.4%2043.8%2060%2040%22%20enable-background%3D%22new%200.4%2043.8%2060%2040%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cg%3E%0D%0A%09%3Cpath%20fill%3D%22%23F3F4F4%22%20d%3D%22M60.4%2C78.8c0%2C2.8-2.2%2C5-5%2C5h-50c-2.8%2C0-5-2.2-5-5v-30c0-2.8%2C2.2-5%2C5-5h50c2.8%2C0%2C5%2C2.2%2C5%2C5V78.8z%22/%3E%0D%0A%09%3Cpath%20fill%3D%22%235565AF%22%20d%3D%22M1.4%2C53.8v-5c0-2.8%2C2.2-5%2C5-5h48c2.8%2C0%2C5%2C2.2%2C5%2C5v5%22/%3E%0D%0A%09%3Cpath%20fill%3D%22%23E6A124%22%20d%3D%22M59.4%2C73.8v5c0%2C2.8-2.2%2C4-5%2C4h-48c-2.8%2C0-5-1.2-5-4v-5%22/%3E%0D%0A%09%3Cg%3E%0D%0A%09%09%3Cpath%20fill%3D%22%235565AF%22%20d%3D%22M17.8%2C67.2c0.4-1.1%2C0.7-1.9%2C0.9-2.2l3.4-6.9h2.5l-5.8%2C11.4H16l-1-11.4h2.3l0.4%2C6.9c0%2C0.2%2C0%2C0.6%2C0%2C1%0D%0A%09%09%09C17.7%2C66.5%2C17.7%2C66.9%2C17.8%2C67.2L17.8%2C67.2z%22/%3E%0D%0A%09%09%3Cpath%20fill%3D%22%235565AF%22%20d%3D%22M23.4%2C69.5l2.4-11.4h2.4l-2.4%2C11.4H23.4z%22/%3E%0D%0A%09%09%3Cpath%20fill%3D%22%235565AF%22%20d%3D%22M35.6%2C66.1c0%2C1.1-0.4%2C1.9-1.2%2C2.6c-0.8%2C0.6-1.8%2C0.9-3.1%2C0.9c-1.2%2C0-2.1-0.2-2.8-0.7v-2.1%0D%0A%09%09%09c1%2C0.6%2C1.9%2C0.8%2C2.8%2C0.8c0.6%2C0%2C1-0.1%2C1.4-0.3c0.3-0.2%2C0.5-0.5%2C0.5-0.9c0-0.2%2C0-0.4-0.1-0.6c-0.1-0.2-0.2-0.3-0.3-0.5%0D%0A%09%09%09c-0.1-0.1-0.5-0.4-1-0.8c-0.7-0.5-1.2-1-1.5-1.5c-0.3-0.5-0.4-1-0.4-1.6c0-0.7%2C0.2-1.3%2C0.5-1.8c0.3-0.5%2C0.8-0.9%2C1.4-1.2%0D%0A%09%09%09c0.6-0.3%2C1.3-0.4%2C2.1-0.4c1.1%2C0%2C2.2%2C0.3%2C3.1%2C0.8L36%2C60.5c-0.8-0.4-1.6-0.6-2.2-0.6c-0.4%2C0-0.8%2C0.1-1.1%2C0.4%0D%0A%09%09%09c-0.3%2C0.2-0.4%2C0.5-0.4%2C0.9c0%2C0.3%2C0.1%2C0.6%2C0.3%2C0.8c0.2%2C0.2%2C0.6%2C0.6%2C1.2%2C0.9c0.6%2C0.4%2C1.1%2C0.9%2C1.4%2C1.4C35.4%2C64.9%2C35.6%2C65.5%2C35.6%2C66.1%0D%0A%09%09%09z%22/%3E%0D%0A%09%09%3Cpath%20fill%3D%22%235565AF%22%20d%3D%22M43.2%2C66.8h-3.7l-1.3%2C2.7h-2.5l6-11.5h2.9l1.1%2C11.5h-2.3L43.2%2C66.8z%20M43.1%2C64.8L42.9%2C62%0D%0A%09%09%09c-0.1-0.7-0.1-1.3-0.1-2v-0.3c-0.2%2C0.6-0.5%2C1.3-0.9%2C2l-1.5%2C3H43.1z%22/%3E%0D%0A%09%3C/g%3E%0D%0A%09%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M30.4%2C43.8%22/%3E%0D%0A%09%3Cpath%20opacity%3D%224.000000e-02%22%20fill%3D%22%23FFFFFF%22%20enable-background%3D%22new%20%20%20%20%22%20d%3D%22M58.9%2C45.3c0.9%2C0.9%2C1.5%2C2.2%2C1.5%2C3.5v15v15%0D%0A%09%09c0%2C1.4-0.6%2C2.6-1.5%2C3.5s-2.2%2C1.5-3.5%2C1.5h-25h-25c-1.4%2C0-2.6-0.6-3.5-1.5L58.9%2C45.3z%22/%3E%0D%0A%09%3Cg%3E%0D%0A%09%09%3Cpath%20fill%3D%22%23F8F8F9%22%20d%3D%22M55.4%2C44.8c2.2%2C0%2C4%2C1.8%2C4%2C4v30c0%2C2.2-1.8%2C4-4%2C4h-50c-2.2%2C0-4-1.8-4-4v-30c0-2.2%2C1.8-4%2C4-4H55.4%20M55.4%2C43.8%0D%0A%09%09%09h-50c-2.8%2C0-5%2C2.2-5%2C5v30c0%2C2.8%2C2.2%2C5%2C5%2C5h50c2.8%2C0%2C5-2.2%2C5-5v-30C60.4%2C46%2C58.1%2C43.8%2C55.4%2C43.8L55.4%2C43.8z%22/%3E%0D%0A%09%3C/g%3E%0D%0A%3C/g%3E%0D%0A%3C/svg%3E%0D%0A');
+	}
+
+	&.mc { 
+		background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2017.1.0%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3C%21DOCTYPE%20svg%20PUBLIC%20%22-//W3C//DTD%20SVG%201.1//EN%22%20%22http%3A//www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd%22%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20viewBox%3D%220.4%2088%2060%2040%22%20enable-background%3D%22new%200.4%2088%2060%2040%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cg%3E%0D%0A%09%3Cpath%20fill%3D%22%235565AF%22%20d%3D%22M60.4%2C123c0%2C2.8-2.2%2C5-5%2C5h-50c-2.8%2C0-5-2.2-5-5V93c0-2.8%2C2.2-5%2C5-5h50c2.8%2C0%2C5%2C2.2%2C5%2C5V123z%22/%3E%0D%0A%09%3Cpath%20opacity%3D%224.000000e-02%22%20fill%3D%22%23FFFFFF%22%20enable-background%3D%22new%20%20%20%20%22%20d%3D%22M58.9%2C89.5c0.9%2C0.9%2C1.5%2C2.2%2C1.5%2C3.5v15v15%0D%0A%09%09c0%2C1.4-0.6%2C2.6-1.5%2C3.5c-0.9%2C0.9-2.2%2C1.5-3.5%2C1.5h-25h-25c-1.4%2C0-2.6-0.6-3.5-1.5L58.9%2C89.5z%22/%3E%0D%0A%09%3Cpath%20fill%3D%22%2356B1D9%22%20d%3D%22M30.4%2C88%22/%3E%0D%0A%09%3Cg%3E%0D%0A%09%09%3Cpath%20fill%3D%22%23EA564B%22%20d%3D%22M30.4%2C101.4c-1.8-2.1-4.5-3.4-7.5-3.4c-5.5%2C0-10%2C4.5-10%2C10c0%2C5.5%2C4.5%2C10%2C10%2C10c3%2C0%2C5.7-1.3%2C7.5-3.4%0D%0A%09%09%09c-1.6-1.8-2.5-4.1-2.5-6.6S28.8%2C103.2%2C30.4%2C101.4z%22/%3E%0D%0A%09%09%3Cpath%20fill%3D%22%23EA564B%22%20d%3D%22M30.4%2C101.4c-1.6%2C1.8-2.5%2C4.1-2.5%2C6.6s0.9%2C4.8%2C2.5%2C6.6c1.6-1.8%2C2.5-4.1%2C2.5-6.6S31.9%2C103.2%2C30.4%2C101.4z%22/%3E%0D%0A%09%3C/g%3E%0D%0A%09%3Cpath%20fill%3D%22%23E9D419%22%20d%3D%22M37.9%2C98c-3%2C0-5.7%2C1.3-7.5%2C3.4c-0.4%2C0.5-0.8%2C1-1.1%2C1.6h2.3c0.4%2C0.6%2C0.6%2C1.3%2C0.9%2C2h-4%0D%0A%09%09c-0.2%2C0.6-0.4%2C1.3-0.4%2C2h4.9c0%2C0.3%2C0.1%2C0.7%2C0.1%2C1c0%2C0.3%2C0%2C0.7-0.1%2C1h-4.9c0.1%2C0.7%2C0.2%2C1.4%2C0.4%2C2h4.1c-0.2%2C0.7-0.5%2C1.4-0.9%2C2h-2.3%0D%0A%09%09c0.3%2C0.6%2C0.7%2C1.1%2C1.1%2C1.6c1.8%2C2.1%2C4.5%2C3.4%2C7.5%2C3.4c5.5%2C0%2C10-4.5%2C10-10C47.9%2C102.5%2C43.4%2C98%2C37.9%2C98z%22/%3E%0D%0A%09%3Cg%3E%0D%0A%09%09%3Cpath%20fill%3D%22%237684B7%22%20d%3D%22M55.4%2C89c2.2%2C0%2C4%2C1.8%2C4%2C4v30c0%2C2.2-1.8%2C4-4%2C4h-50c-2.2%2C0-4-1.8-4-4V93c0-2.2%2C1.8-4%2C4-4H55.4%20M55.4%2C88h-50%0D%0A%09%09%09c-2.8%2C0-5%2C2.2-5%2C5v30c0%2C2.8%2C2.2%2C5%2C5%2C5h50c2.8%2C0%2C5-2.2%2C5-5V93C60.4%2C90.2%2C58.1%2C88%2C55.4%2C88L55.4%2C88z%22/%3E%0D%0A%09%3C/g%3E%0D%0A%3C/g%3E%0D%0A%3C/svg%3E%0D%0A');
+	}
+
+	&.amex {
+		background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2017.1.0%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3C%21DOCTYPE%20svg%20PUBLIC%20%22-//W3C//DTD%20SVG%201.1//EN%22%20%22http%3A//www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd%22%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20viewBox%3D%220.1%20131.8%2060%2040%22%20enable-background%3D%22new%200.1%20131.8%2060%2040%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cg%3E%0D%0A%09%3Cg%3E%0D%0A%09%09%3Cpath%20fill%3D%22%235EC1EC%22%20d%3D%22M60.1%2C166.8c0%2C2.8-2.2%2C5-5%2C5h-50c-2.8%2C0-5-2.2-5-5v-30c0-2.8%2C2.2-5%2C5-5h50c2.8%2C0%2C5%2C2.2%2C5%2C5V166.8z%22/%3E%0D%0A%09%09%3Cpath%20fill%3D%22%235BBBE6%22%20d%3D%22M58.6%2C133.3c0.9%2C0.9%2C1.5%2C2.2%2C1.5%2C3.5v15v15c0%2C1.4-0.6%2C2.6-1.5%2C3.5c-0.9%2C0.9-2.2%2C1.5-3.5%2C1.5h-25h-25%0D%0A%09%09%09c-1.4%2C0-2.6-0.6-3.5-1.5L58.6%2C133.3z%22/%3E%0D%0A%09%09%3Cg%3E%0D%0A%09%09%09%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M17.7%2C156.7l-0.5-1.7h-3l-0.5%2C1.7H11l3-9.3h3.3l3.1%2C9.3H17.7z%20M16.7%2C152.9l-0.4-1.5%0D%0A%09%09%09%09c-0.1-0.3-0.2-0.8-0.3-1.3c-0.1-0.5-0.2-0.9-0.3-1.2c0%2C0.2-0.1%2C0.6-0.2%2C1.1s-0.4%2C1.5-0.7%2C2.9L16.7%2C152.9L16.7%2C152.9z%22/%3E%0D%0A%09%09%09%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M25.5%2C156.7l-1.9-6.7h-0.1c0.1%2C1.1%2C0.1%2C2%2C0.1%2C2.7v4h-2.2v-9.3h3.3l1.9%2C6.6h0.1l1.9-6.6H32v9.3h-2.3v-4.1%0D%0A%09%09%09%09c0-0.2%2C0-0.4%2C0-0.7s0-0.9%2C0.1-1.9h-0.1l-1.9%2C6.7L25.5%2C156.7L25.5%2C156.7z%22/%3E%0D%0A%09%09%09%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M39.2%2C156.7h-5.5v-9.3h5.5v2h-3v1.5H39v2h-2.8v1.8h3V156.7z%22/%3E%0D%0A%09%09%09%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M49.2%2C156.7h-2.9l-1.8-2.9l-1.8%2C2.9h-2.8L43%2C152l-2.9-4.5h2.8l1.7%2C2.9l1.6-2.9H49l-2.9%2C4.7L49.2%2C156.7z%22%0D%0A%09%09%09%09/%3E%0D%0A%09%09%3C/g%3E%0D%0A%09%09%3Cg%3E%0D%0A%09%09%09%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M17.7%2C156.7l-0.5-1.7h-3l-0.5%2C1.7H11l3-9.3h3.3l3.1%2C9.3H17.7z%20M16.7%2C152.9l-0.4-1.5%0D%0A%09%09%09%09c-0.1-0.3-0.2-0.8-0.3-1.3c-0.1-0.5-0.2-0.9-0.3-1.2c0%2C0.2-0.1%2C0.6-0.2%2C1.1s-0.4%2C1.5-0.7%2C2.9L16.7%2C152.9L16.7%2C152.9z%22/%3E%0D%0A%09%09%09%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M25.5%2C156.7l-1.9-6.7h-0.1c0.1%2C1.1%2C0.1%2C2%2C0.1%2C2.7v4h-2.2v-9.3h3.3l1.9%2C6.6h0.1l1.9-6.6H32v9.3h-2.3v-4.1%0D%0A%09%09%09%09c0-0.2%2C0-0.4%2C0-0.7s0-0.9%2C0.1-1.9h-0.1l-1.9%2C6.7L25.5%2C156.7L25.5%2C156.7z%22/%3E%0D%0A%09%09%09%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M39.2%2C156.7h-5.5v-9.3h5.5v2h-3v1.5H39v2h-2.8v1.8h3V156.7z%22/%3E%0D%0A%09%09%09%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M49.2%2C156.7h-2.9l-1.8-2.9l-1.8%2C2.9h-2.8L43%2C152l-2.9-4.5h2.8l1.7%2C2.9l1.6-2.9H49l-2.9%2C4.7L49.2%2C156.7z%22%0D%0A%09%09%09%09/%3E%0D%0A%09%09%3C/g%3E%0D%0A%09%09%3Cpath%20fill%3D%22%2356B1D9%22%20d%3D%22M30.1%2C131.8%22/%3E%0D%0A%09%3C/g%3E%0D%0A%09%3Cg%3E%0D%0A%09%09%3Cpath%20fill%3D%22%239BCEE0%22%20d%3D%22M55.1%2C132.8c2.2%2C0%2C4%2C1.8%2C4%2C4v30c0%2C2.2-1.8%2C4-4%2C4h-50c-2.2%2C0-4-1.8-4-4v-30c0-2.2%2C1.8-4%2C4-4H55.1%0D%0A%09%09%09%20M55.1%2C131.8h-50c-2.8%2C0-5%2C2.2-5%2C5v30c0%2C2.8%2C2.2%2C5%2C5%2C5h50c2.8%2C0%2C5-2.2%2C5-5v-30C60.1%2C134%2C57.9%2C131.8%2C55.1%2C131.8L55.1%2C131.8z%22/%3E%0D%0A%09%3C/g%3E%0D%0A%3C/g%3E%0D%0A%3C/svg%3E%0D%0A');
+	}
+
+	&.disc { 
+		background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2017.1.0%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3C%21DOCTYPE%20svg%20PUBLIC%20%22-//W3C//DTD%20SVG%201.1//EN%22%20%22http%3A//www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd%22%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20viewBox%3D%220.1%20175.7%2060%2040%22%20enable-background%3D%22new%200.1%20175.7%2060%2040%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cg%3E%0D%0A%09%3Cpath%20fill%3D%22%23FFF9F0%22%20d%3D%22M60.1%2C210.7c0%2C2.8-2.2%2C5-5%2C5h-50c-2.8%2C0-5-2.2-5-5v-30c0-2.8%2C2.2-5%2C5-5h50c2.8%2C0%2C5%2C2.2%2C5%2C5V210.7z%22/%3E%0D%0A%09%3Cg%3E%0D%0A%09%09%3Cpath%20fill%3D%22%23414042%22%20d%3D%22M15.2%2C195.7c0%2C1-0.3%2C1.8-0.9%2C2.3c-0.6%2C0.5-1.4%2C0.8-2.5%2C0.8h-1.7v-6.1h1.9c1%2C0%2C1.8%2C0.3%2C2.3%2C0.8%0D%0A%09%09%09C15%2C194%2C15.2%2C194.7%2C15.2%2C195.7z%20M13.9%2C195.7c0-1.3-0.6-2-1.7-2h-0.7v4H12C13.3%2C197.7%2C13.9%2C197%2C13.9%2C195.7z%22/%3E%0D%0A%09%09%3Cpath%20fill%3D%22%23414042%22%20d%3D%22M16.3%2C198.8v-6.1h1.3v6.1H16.3z%22/%3E%0D%0A%09%09%3Cpath%20fill%3D%22%23414042%22%20d%3D%22M22.8%2C197.1c0%2C0.6-0.2%2C1-0.6%2C1.3c-0.4%2C0.3-0.9%2C0.5-1.6%2C0.5c-0.6%2C0-1.2-0.1-1.7-0.4v-1.2%0D%0A%09%09%09c0.4%2C0.2%2C0.8%2C0.3%2C1%2C0.4c0.3%2C0.1%2C0.5%2C0.1%2C0.8%2C0.1c0.3%2C0%2C0.5-0.1%2C0.7-0.2c0.1-0.1%2C0.2-0.3%2C0.2-0.5c0-0.1%2C0-0.2-0.1-0.3%0D%0A%09%09%09c-0.1-0.1-0.2-0.2-0.3-0.3c-0.1-0.1-0.4-0.2-0.8-0.4c-0.4-0.2-0.6-0.3-0.8-0.5c-0.2-0.2-0.3-0.3-0.4-0.6s-0.2-0.5-0.2-0.8%0D%0A%09%09%09c0-0.5%2C0.2-1%2C0.5-1.3c0.4-0.3%2C0.9-0.5%2C1.5-0.5c0.3%2C0%2C0.6%2C0%2C0.9%2C0.1c0.3%2C0.1%2C0.6%2C0.2%2C0.9%2C0.3l-0.4%2C1c-0.3-0.1-0.6-0.2-0.8-0.3%0D%0A%09%09%09c-0.2-0.1-0.4-0.1-0.6-0.1c-0.2%2C0-0.4%2C0.1-0.6%2C0.2c-0.1%2C0.1-0.2%2C0.3-0.2%2C0.4c0%2C0.1%2C0%2C0.2%2C0.1%2C0.3c0.1%2C0.1%2C0.1%2C0.2%2C0.3%2C0.2%0D%0A%09%09%09s0.4%2C0.2%2C0.8%2C0.4c0.6%2C0.3%2C1%2C0.5%2C1.2%2C0.8C22.6%2C196.3%2C22.8%2C196.7%2C22.8%2C197.1z%22/%3E%0D%0A%09%09%3Cpath%20fill%3D%22%23414042%22%20d%3D%22M26.4%2C193.7c-0.5%2C0-0.9%2C0.2-1.1%2C0.5c-0.3%2C0.4-0.4%2C0.9-0.4%2C1.5c0%2C1.4%2C0.5%2C2%2C1.5%2C2c0.4%2C0%2C0.9-0.1%2C1.6-0.3%0D%0A%09%09%09v1.1c-0.5%2C0.2-1.1%2C0.3-1.7%2C0.3c-0.9%2C0-1.6-0.3-2-0.8c-0.5-0.5-0.7-1.3-0.7-2.3c0-0.6%2C0.1-1.2%2C0.3-1.7c0.2-0.5%2C0.6-0.8%2C1-1.1%0D%0A%09%09%09c0.4-0.3%2C0.9-0.4%2C1.5-0.4c0.6%2C0%2C1.2%2C0.1%2C1.8%2C0.4l-0.4%2C1c-0.2-0.1-0.5-0.2-0.7-0.3C26.9%2C193.7%2C26.7%2C193.7%2C26.4%2C193.7z%22/%3E%0D%0A%09%09%3Cpath%20fill%3D%22%23414042%22%20d%3D%22M38.3%2C192.7h1.3l-2.1%2C6.1h-1.4l-2.1-6.1h1.3l1.1%2C3.6c0.1%2C0.2%2C0.1%2C0.5%2C0.2%2C0.7c0.1%2C0.3%2C0.1%2C0.5%2C0.1%2C0.6%0D%0A%09%09%09c0-0.3%2C0.1-0.7%2C0.3-1.3L38.3%2C192.7z%22/%3E%0D%0A%09%09%3Cpath%20fill%3D%22%23414042%22%20d%3D%22M43.9%2C198.8h-3.5v-6.1h3.5v1.1h-2.2v1.3h2.1v1.1h-2.1v1.6h2.2V198.8z%22/%3E%0D%0A%09%09%3Cpath%20fill%3D%22%23414042%22%20d%3D%22M46.5%2C196.4v2.3h-1.3v-6.1h1.8c0.8%2C0%2C1.4%2C0.1%2C1.8%2C0.5c0.4%2C0.3%2C0.6%2C0.8%2C0.6%2C1.4c0%2C0.4-0.1%2C0.7-0.3%2C1%0D%0A%09%09%09c-0.2%2C0.3-0.5%2C0.5-0.8%2C0.7c0.9%2C1.4%2C1.5%2C2.3%2C1.8%2C2.6h-1.4l-1.5-2.3L46.5%2C196.4L46.5%2C196.4z%20M46.5%2C195.4h0.4c0.4%2C0%2C0.7-0.1%2C0.9-0.2%0D%0A%09%09%09c0.2-0.1%2C0.3-0.4%2C0.3-0.6c0-0.3-0.1-0.5-0.3-0.6s-0.5-0.2-0.9-0.2h-0.4L46.5%2C195.4L46.5%2C195.4z%22/%3E%0D%0A%09%09%3Ccircle%20fill%3D%22%23E6A124%22%20cx%3D%2231.2%22%20cy%3D%22195.7%22%20r%3D%223%22/%3E%0D%0A%09%3C/g%3E%0D%0A%09%3Cpath%20fill%3D%22%23E6A124%22%20d%3D%22M60.1%2C203.2v7.5c0%2C0.7-0.1%2C1.3-0.4%2C1.9c-0.3%2C0.6-0.6%2C1.1-1.1%2C1.6s-1%2C0.8-1.6%2C1.1c-0.6%2C0.3-1.3%2C0.4-1.9%2C0.4%0D%0A%09%09H32.7H10.2L60.1%2C203.2z%22/%3E%0D%0A%09%3Cpath%20opacity%3D%228.000000e-02%22%20fill%3D%22%23FFFFFF%22%20enable-background%3D%22new%20%20%20%20%22%20d%3D%22M58.6%2C177.2c0.9%2C0.9%2C1.5%2C2.2%2C1.5%2C3.5v15v15%0D%0A%09%09c0%2C1.4-0.6%2C2.6-1.5%2C3.5c-0.9%2C0.9-2.2%2C1.5-3.5%2C1.5h-25h-25c-1.4%2C0-2.6-0.6-3.5-1.5L58.6%2C177.2z%22/%3E%0D%0A%09%3Cg%3E%0D%0A%09%09%3Cpath%20fill%3D%22%23F7F5F2%22%20d%3D%22M55.1%2C176.7c2.2%2C0%2C4%2C1.8%2C4%2C4v30c0%2C2.2-1.8%2C4-4%2C4h-50c-2.2%2C0-4-1.8-4-4v-30c0-2.2%2C1.8-4%2C4-4H55.1%0D%0A%09%09%09%20M55.1%2C175.7h-50c-2.8%2C0-5%2C2.2-5%2C5v30c0%2C2.8%2C2.2%2C5%2C5%2C5h50c2.8%2C0%2C5-2.2%2C5-5v-30C60.1%2C178%2C57.9%2C175.7%2C55.1%2C175.7L55.1%2C175.7z%22/%3E%0D%0A%09%3C/g%3E%0D%0A%3C/g%3E%0D%0A%3C/svg%3E%0D%0A');
+
+	}
+
+	&.cvv2 {
+		background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2017.1.0%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3C%21DOCTYPE%20svg%20PUBLIC%20%22-//W3C//DTD%20SVG%201.1//EN%22%20%22http%3A//www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd%22%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20viewBox%3D%220%20308.7%2060%2040%22%20enable-background%3D%22new%200%20308.7%2060%2040%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cg%3E%0D%0A%09%3Cg%3E%0D%0A%09%09%3Cpath%20fill%3D%22%23CDCDCD%22%20d%3D%22M60%2C343.7c0%2C2.8-2.2%2C5-5%2C5H5c-2.8%2C0-5-2.2-5-5v-30c0-2.8%2C2.2-5%2C5-5h50c2.8%2C0%2C5%2C2.2%2C5%2C5V343.7z%22/%3E%0D%0A%09%3C/g%3E%0D%0A%09%3Crect%20x%3D%221.8%22%20y%3D%22315%22%20fill%3D%22%23424143%22%20width%3D%2258.2%22%20height%3D%228%22/%3E%0D%0A%09%3Crect%20x%3D%227.8%22%20y%3D%22327%22%20fill%3D%22%23FFFFFF%22%20width%3D%2236%22%20height%3D%228%22/%3E%0D%0A%09%3Crect%20x%3D%2210.8%22%20y%3D%22330%22%20fill%3D%22%23424143%22%20width%3D%2229%22%20height%3D%222%22/%3E%0D%0A%09%3Cg%3E%0D%0A%09%09%3Cg%3E%0D%0A%09%09%09%3Cpath%20fill%3D%22%23DFDEDD%22%20d%3D%22M55%2C309.7c2.2%2C0%2C4%2C1.8%2C4%2C4v30c0%2C2.2-1.8%2C4-4%2C4H5c-2.2%2C0-4-1.8-4-4v-30c0-2.2%2C1.8-4%2C4-4H55%20M55%2C308.7H5%0D%0A%09%09%09%09c-2.8%2C0-5%2C2.2-5%2C5v30c0%2C2.8%2C2.2%2C5%2C5%2C5h50c2.8%2C0%2C5-2.2%2C5-5v-30C60%2C311%2C57.8%2C308.7%2C55%2C308.7L55%2C308.7z%22/%3E%0D%0A%09%09%3C/g%3E%0D%0A%09%3C/g%3E%0D%0A%09%3Crect%20x%3D%2246.8%22%20y%3D%22327%22%20fill%3D%22%23FFFFFF%22%20width%3D%228%22%20height%3D%228%22/%3E%0D%0A%09%3Crect%20x%3D%2247.8%22%20y%3D%22330%22%20fill%3D%22%23424143%22%20width%3D%226%22%20height%3D%222%22/%3E%0D%0A%09%3Ccircle%20fill%3D%22none%22%20stroke%3D%22%23E9564B%22%20stroke-width%3D%222%22%20stroke-miterlimit%3D%2210%22%20cx%3D%2250.2%22%20cy%3D%22330.9%22%20r%3D%227.8%22/%3E%0D%0A%3C/g%3E%0D%0A%3C/svg%3E%0D%0A');
+		-webkit-transform: rotateY(180deg);
+		-moz-transform: rotateY(180deg);
+		-ms-transform: rotateY(180deg);
+		-o-transform: rotateY(180deg);
+		transform: rotateY(180deg);
+	}
+}
+
+.no-svg .card-image {
+	background-image: url('../images/cc-front.png');
+
+	&.visa {
+		background-image: url('../images/cc-visa.png');
+	}
+
+	&.mc { 
+		background-image: url('../images/cc-mc.png');
+	}
+
+	&.amex {
+		background-image: url('../images/cc-amex.png');
+	}
+
+	&.disc { 
+		background-image: url('../images/cc-disc.png');
+	}
+
+	&.cvv2 {
+		background-image: url('../images/cc-back.png');
+	}
+}
+
+.card-instruction {
+	font-size: 80%;
+	color: $gray-dark;
+
+	&.invalid {
+		color: $error;
+	}
+
+	&.valid {
+		color: $valid;
+	}
+}
+
+.shake {
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-iteration-count: 1;
+	-o-animation-iteration-count: 1;
+	animation-iteration-count: 1;
+	-webkit-animation-duration: .4s;
+	-moz-animation-duration: .4s;
+	-o-animation-duration: .4s;
+	animation-duration: .4s;
+	-webkit-animation-fill-mode: both;
+	-moz-animation-fill-mode: both;
+	-o-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-name: shake;
+	-moz-animation-name: shake;
+	-o-animation-name: shake;
+	animation-name: shake;
+}
+
+/* ======================================
+ * ANIMATIONS
+ * ======================================
+ */
+@-webkit-keyframes shake {
+  0%, 100% { -webkit-transform: translateX(0); }
+  30%, 60% { -webkit-transform: translateX(-10px); }
+  40%, 80% { -webkit-transform: translateX(10px); }
+}
+
+@-webkit-keyframes slide {
+	0%, 10% { text-indent: 0; width: 186px; -webkit-transform: translateX(-10%); }
+	10%, 20% { text-indent: -15px; width: 176px; -webkit-transform: translateX(-10%); }
+	20%, 30% { text-indent: -30px; width: 156px; -webkit-transform: translateX(-10%); }
+	30%, 40% { text-indent: -45px; width: 136px; -webkit-transform: translateX(-10%); }
+	40%, 50% { text-indent: -60px; width: 116px; -webkit-transform: translateX(-10%); }
+	50%, 60% { text-indent: -75px; width: 96px; -webkit-transform: translateX(-15%); }
+	60%, 70% { text-indent: -90px; width: 76px; -webkit-transform: translateX(-15%); }
+	70%, 80% { text-indent: -105px; width: 66px; -webkit-transform: translateX(-10%); }
+	80%, 90% { text-indent: -110px;width: 56px; -webkit-transform: translateX(-5%); }
+	90%, 100% { text-indent: -120px;width: 46px; -webkit-transform: translateX(0); }
+}
+
+@-moz-keyframes slide {
+	0%, 10% { text-indent: 0; width: 186px; -moz-transform: translateX(-10%); }
+	10%, 20% { text-indent: -15px; width: 176px; -moz-transform: translateX(-10%); }
+	20%, 30% { text-indent: -30px; width: 156px; -moz-transform: translateX(-10%); }
+	30%, 40% { text-indent: -45px; width: 136px; -moz-transform: translateX(-10%); }
+	40%, 50% { text-indent: -60px; width: 116px; -moz-transform: translateX(-10%); }
+	50%, 60% { text-indent: -75px; width: 96px; -moz-transform: translateX(-15%); }
+	60%, 70% { text-indent: -90px; width: 76px; -moz-transform: translateX(-15%); }
+	70%, 80% { text-indent: -105px; width: 66px; -moz-transform: translateX(-10%); }
+	80%, 90% { text-indent: -110px;width: 56px; -moz-transform: translateX(-5%); }
+	90%, 100% { text-indent: -120px;width: 46px; -moz-transform: translateX(0); }
+}
+
+@-o-keyframes slide {
+	0%, 10% { text-indent: 0; width: 186px; -o-transform: translateX(-10%); }
+	10%, 20% { text-indent: -15px; width: 176px; -o-transform: translateX(-10%); }
+	20%, 30% { text-indent: -30px; width: 156px; -o-transform: translateX(-10%); }
+	30%, 40% { text-indent: -45px; width: 136px; -o-transform: translateX(-10%); }
+	40%, 50% { text-indent: -60px; width: 116px; -o-transform: translateX(-10%); }
+	50%, 60% { text-indent: -75px; width: 96px; -o-transform: translateX(-15%); }
+	60%, 70% { text-indent: -90px; width: 76px; -o-transform: translateX(-15%); }
+	70%, 80% { text-indent: -105px; width: 66px; -o-transform: translateX(-10%); }
+	80%, 90% { text-indent: -110px;width: 56px; -o-transform: translateX(-5%); }
+	90%, 100% { text-indent: -120px;width: 46px; -o-transform: translateX(0); }
+}
+
+@keyframes slide {
+	0%, 10% { text-indent: 0; width: 186px; transform: translateX(-10%); }
+	10%, 20% { text-indent: -15px; width: 176px; transform: translateX(-10%); }
+	20%, 30% { text-indent: -30px; width: 156px; transform: translateX(-10%); }
+	30%, 40% { text-indent: -45px; width: 136px; transform: translateX(-10%); }
+	40%, 50% { text-indent: -60px; width: 116px; transform: translateX(-10%); }
+	50%, 60% { text-indent: -75px; width: 96px; transform: translateX(-15%); }
+	60%, 70% { text-indent: -90px; width: 76px; transform: translateX(-15%); }
+	70%, 80% { text-indent: -105px; width: 66px; transform: translateX(-10%); }
+	80%, 90% { text-indent: -110px;width: 56px; transform: translateX(-5%); }
+	90%, 100% { text-indent: -120px;width: 46px; transform: translateX(0); }
+}
+
+@-moz-keyframes shake {
+  0%, 100% { -moz-transform: translateX(0); }
+  30%, 60% { -moz-transform: translateX(-10px); }
+  40%, 80% { -moz-transform: translateX(10px); }
+}
+
+@-o-keyframes shake {
+  0%, 100% { -o-transform: translateX(0); }
+  30%, 60% { -o-transform: translateX(-10px); }
+  40%, 80% { -o-transform: translateX(10px); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  30%, 60% { transform: translateX(-10px); }
+  40%, 80% { transform: translateX(10px); }
+}
