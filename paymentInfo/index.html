@@ -4,6 +4,8 @@
 	<meta charset="utf-8">
 	<meta content="width=device-width" name="viewport">
 	<meta content="yes" name="apple-mobile-web-app-capable">
+	<link rel="stylesheet" href="assets/css/normalize.css">
+	<link rel="stylesheet" href="assets/css/credit-card.css">
 	<link rel="shortcut icon" href="assets/favicon.ico">
 	<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 	<title>Single Input Credit Card Field</title>
@@ -13,16 +15,25 @@
 		<form>
 			<fieldset class="credit-card-group">
 				<legend>Credit Card Information</legend>
-				<label for="card-number">Credit Card Number</label>
-				<input placeholder="1234 5678 9012 3456" pattern="[0-9]*" type="text" class="card-number" id="card-number">
-				<label for="card-expiration">Expiration Date</label>
-				<input placeholder="MM/YY" pattern="[0-9]*" type="text" class="card-expiration" id="card-expiration">
-				<label for="card-cvv">CVV Number</label>
-				<input placeholder="CVV" pattern="[0-9]*" type="text" class="card-cvv" id="card-cvv">
-				<label for="card-zip">Billing Zip Code</label>
-				<input placeholder="ZIP" pattern="[0-9]*" type="text" class="card-zip" id="card-zip">
+				<div class="row">
+					<label for="card-number">Credit Card Number</label>
+					<input placeholder="1234 5678 9012 3456" pattern="[0-9]*" type="text" class="card-number" id="card-number">
+				</div>
+				<div class="row">
+					<label for="card-expiration">Expiration Date</label>
+					<input placeholder="MM/YY" pattern="[0-9]*" type="text" class="card-expiration" id="card-expiration">
+				</div>
+				<div class="row">
+					<label for="card-cvv">CVV Number</label>
+					<input placeholder="CVV" pattern="[0-9]*" type="text" class="card-cvv" id="card-cvv">
+				</div>
+				<div class="row">
+					<label for="card-zip">Billing Zip Code</label>
+					<input placeholder="ZIP" pattern="[0-9]*" type="text" class="card-zip" id="card-zip">
+				</div>
 			</fieldset>
 		</form>
 	</section>
+	<script src="assets/scripts/libs/modernizr.js"></script>
 </body>
 </html>
