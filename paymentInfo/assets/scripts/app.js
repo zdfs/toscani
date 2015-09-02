@@ -139,6 +139,21 @@
 					return;
 				}
 
+				// Let's make sure the number entered checks against the Luhn Algorithm
+				if (helpers.ccLuhnCheck(uvalue) === false) {
+					$(element)
+						.parents("." + opts.fieldsetClass)
+						.addClass("invalid shake");
+				
+					// Update instruction class to reflect the error
+					$('.' + opts.cardInstructionClass).addClass("invalid");
+					
+					// Update instruction message
+					helpers.updateInstruction(opts.messageLuhnCheckError);
+					
+					return;
+				}
+
 				// Store the credit card value in data(). Replace the value with the last
 				// four numbers of the card.
 
@@ -373,7 +388,30 @@
 
 			updateInstruction: function (message) {
 				$('.card-instruction').html(message);
-			}
+			},
+
+			// This function returns true or false if
+			/**
+			 * Luhn algorithm in JavaScript: validate credit card number supplied as string of numbers
+			 * @author ShirtlessKirk. Copyright (c) 2012.
+			 * @license WTFPL (http://www.wtfpl.net/txt/copying)
+			*/
+			ccLuhnCheck: (function (arr) {
+				return function (ccNum) {
+					var
+						len = ccNum.length,
+						bit = 1,
+						sum = 0,
+						val;
+						
+					while (len) {
+						val = parseInt(ccNum.charAt(--len), 10);
+						sum += (bit ^= 1) ? arr[val] : val;
+					}
+					
+					return sum && sum % 10 === 0;
+				};
+			}([0, 2, 4, 6, 8, 1, 3, 5, 7, 9]))
 
 		};
 
@@ -472,6 +510,7 @@
 		focusDelay: 200,
 		messageEnterCardNumber : "Please enter your credit card number",
 		messageCardNumberError : "Please enter a valid credit card number",
+		messageLuhnCheckError : "Please double check your credit card number",
 		messageExpiration : "Please enter your card's expiration month and year",
 		messageExpirationError : "Please enter a valid month and year",
 		messageCVV : "Please enter the three-digit CVV number found on the back of your card",
